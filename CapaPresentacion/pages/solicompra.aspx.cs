@@ -221,7 +221,9 @@ namespace CapaPresentacion.pages
             else if (e.CommandName == "eliminar")
             {
                 Lotes_pro.Lote_id = Convert.ToInt32(dgvrow.Cells[2].Text);
-                //msg
+                  //functions fn = new functions();
+                // Session["msg"] = fn.msg(clsLotPro.Delete_Lotes_pro(Lotes_pro), "info");
+
                 clsLotPro.Delete_Lotes_pro(Lotes_pro);
 
                         Lotes_pro.Lote_id = 0;
@@ -260,6 +262,11 @@ namespace CapaPresentacion.pages
             {
                 Solicitud.Solicomp_id = Convert.ToInt32(dgvrow.Cells[2].Text);
                 //msg
+
+                 //functions fn = new functions();
+                // Session["msg"] = fn.msg(clsPro.Delete_Productos(Producto), "info");
+                //  Response.Redirect("solicompra.aspx");
+
                 clsSolicomp.Delete_Solicitud_comp(Solicitud);
                 load();
                         

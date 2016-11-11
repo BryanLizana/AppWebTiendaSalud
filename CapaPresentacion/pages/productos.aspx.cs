@@ -64,32 +64,7 @@ namespace CapaPresentacion.pages
 
         protected void dgv_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            //GridViewRow dr_dgv = dgv.Rows[e.NewEditIndex];
-            //var asd = Session["Producto_id"];
-            var row_data = e.Values[0];
-            string id = Convert.ToString(row_data);
-            Session["Producto_id"] = id;
-            PlaceHolder1.Visible = true;
-            //edit
-            if (PlaceHolder1.Visible == true)
-            {
-                if (Session["Producto_id"].ToString() != "0")
-                {
-                    DataTable dt_Producto = new DataTable();
-                    Producto.Pro_id = Convert.ToInt32(Session["Producto_id"]);
-                    dt_Producto = this.clsPro.List_Productos(Producto);
 
-                    //first data
-                    DataRow dr = dt_Producto.Rows[0];
-                    txtname_co.Text = dr[1].ToString();
-                    txtname.Text = dr[2].ToString();
-                    txtpreciou.Text = dr[3].ToString();
-                    txtpreciom.Text = dr[4].ToString();
-                    cbtype.SelectedValue = dr[5].ToString();
-                    txtprocedencia.Text = dr[6].ToString();
-
-                }
-            }
         }
 
         protected void dgv_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,5 +109,58 @@ namespace CapaPresentacion.pages
         //    Session["Producto_type"] = (cblisttype.Text =="") ? "MEDICAMENTO" : cblisttype.SelectedValue.ToString();
         //    load();
         //}
+
+         protected void dgv_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //soli
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow dgvrow = dgv.Rows[index];
+            if (e.CommandName == "editar")
+            {
+
+                string id = dgvrow.Cells[2].Text;
+                Session["Producto_id"] = id;
+                PlaceHolder1.Visible = true;
+                //edit
+                if (PlaceHolder1.Visible == true)
+                {
+                    if (Session["Producto_id"].ToString() != "0")
+                    {
+                         DataTable dt_Producto = new DataTable();
+                            Producto.Pro_id = Convert.ToInt32(Session["Producto_id"]);
+                            dt_Producto = this.clsPro.List_Productos(Producto);
+
+                            //first data
+                            DataRow dr = dt_Producto.Rows[0];
+                            txtname_co.Text = dr[1].ToString();
+                            txtname.Text = dr[2].ToString();
+                            txtpreciou.Text = dr[3].ToString();
+                            txtpreciom.Text = dr[4].ToString();
+                            cbtype.SelectedValue = dr[5].ToString();
+                            txtprocedencia.Text = dr[6].ToString();
+
+                    }
+                }
+
+            }
+            else if (e.CommandName == "eliminar")
+            {
+                Producto.Pro_id = Convert.ToInt32(dgvrow.Cells[2].Text);
+
+                //    functions fn = new functions();
+                // Session["msg"] = fn.msg(clsPro.Delete_Productos(Producto), "info");
+                // Session["Cli_id"] = "0";
+                // Response.Redirect("productos.aspx");
+
+
+                clsPro.Delete_Productos(Producto);
+                load();
+                        
+            }
+               
+            
+        }
+
+
     }
 }

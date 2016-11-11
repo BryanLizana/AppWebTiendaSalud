@@ -96,10 +96,19 @@ namespace CapaPresentacion.pages
         protected void dgv_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
-            if (e.Values.Count > 0)
+         
+        }
+
+
+        protected void dgv_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //soli
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow dgvrow = dgv.Rows[index];
+            if (e.CommandName == "editar")
             {
-                var row_data = e.Values[0];
-                string id = Convert.ToString(row_data);
+
+                string id = dgvrow.Cells[2].Text;
                 Session["Cli_id"] = id;
                 PlaceHolder1.Visible = true;
                 //edit
@@ -125,8 +134,25 @@ namespace CapaPresentacion.pages
 
                     }
                 }
+                    
+
+
             }
+            else if (e.CommandName == "eliminar")
+            {
+                Cliente.Cli_id = Convert.ToInt32(dgvrow.Cells[2].Text);
+                //msg
+               
+                 functions fn = new functions();
+                Session["msg"] = fn.msg( clsClie.Delete_Clientes(Cliente), "info");
+                Session["Cli_id"] = "0";
+                Response.Redirect("clientes.aspx");
+                        
+            }
+               
+            
         }
+
 
         protected void dgv_SelectedIndexChanged(object sender, EventArgs e)
         {

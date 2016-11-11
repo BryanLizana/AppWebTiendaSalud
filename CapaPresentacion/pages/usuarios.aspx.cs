@@ -103,34 +103,63 @@ namespace CapaPresentacion.pages
 
         protected void dgv_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            //GridViewRow dr_dgv = dgv.Rows[e.NewEditIndex];
-            //var asd = Session["Other_user_id"];
-            //var row_data = dr_dgv.Cells[2].Text;
-            //string id = Convert.ToString(row_data);
-            //Session["Other_user_id"] = id;
-            //PlaceHolder1.Visible = true;
-            ////edit
-            //if (PlaceHolder1.Visible == true)
-            //{
-            //    if (Session["Other_user_id"].ToString() != "0")
-            //    {
-            //        DataTable dt_user = new DataTable();
-            //        this.User.Us_id = Convert.ToInt32(Session["Other_user_id"]);
-            //        dt_user = this.clsUser.List_Usuarios(this.User);
-
-            //        //first data
-            //        DataRow dr = dt_user.Rows[0];
-            //        txtdni.Text = dr[4].ToString();
-            //        txtfname.Text = dr[1].ToString();
-            //        txtlname.Text = dr[2].ToString();
-            //        txtdireccion.Text = dr[6].ToString();
-            //        txtdistrito.Text = dr[7].ToString();
-            //        cbtype.SelectedIndex = Convert.ToInt32(dr[5].ToString()) - 1;
-            //        txtpass.Text = dr[8].ToString();
-
-            //    }
-            //}
+     
            
         }
+
+        
+        protected void dgv_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //soli
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow dgvrow = dgv.Rows[index];
+            if (e.CommandName == "editar")
+            {
+
+                string id = dgvrow.Cells[2].Text;
+                Session["Other_user_id"] = id;
+                PlaceHolder1.Visible = true;
+                //edit
+                if (PlaceHolder1.Visible == true)
+                {
+                    if (Session["Other_user_id"].ToString() != "0")
+                    {
+                        DataTable dt_user = new DataTable();
+                        User.Us_id = Convert.ToInt32(Session["Other_user_id"].ToString());
+                        dt_user = clsUser.List_Usuarios(User);
+
+                         //first data
+                            DataRow dr = dt_user.Rows[0];
+                            txtdni.Text = dr[4].ToString();
+                            txtfname.Text = dr[1].ToString();
+                            txtlname.Text = dr[2].ToString();
+                            txtdireccion.Text = dr[6].ToString();
+                            txtdistrito.Text = dr[7].ToString();
+                            cbtype.SelectedIndex = Convert.ToInt32(dr[5].ToString()) - 1;
+                            txtpass.Text = dr[8].ToString();
+
+
+                    }
+                }
+                    
+
+
+            }
+            else if (e.CommandName == "eliminar")
+            {
+                User.Us_id = Convert.ToInt32(dgvrow.Cells[2].Text);
+                //msg
+               
+                functions fn = new functions();
+                Session["msg"] = fn.msg( clsUser.Delete_Usuarios(User), "info");
+                Session["Other_user_id"] = "0";
+                Response.Redirect("usuarios.aspx");
+                        
+            }
+               
+            
+        }
+
+
     }
 }
