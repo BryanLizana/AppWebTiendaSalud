@@ -1,0 +1,5 @@
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaDatos\bin\Debug\CapaDatos.dll
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaDatos\obj\Debug\CapaDatos.dll
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaDatos\obj\Debug\CapaDatos.csprojResolveAssemblyReference.cache

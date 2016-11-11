@@ -1,0 +1,7 @@
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaNegocios\bin\Debug\CapaNegocios.dll
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaNegocios\bin\Debug\CapaNegocios.pdb
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaNegocios\bin\Debug\CapaDatos.dll
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaNegocios\bin\Debug\CapaDatos.pdb
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaNegocios\obj\Debug\CapaNegocios.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaNegocios\obj\Debug\CapaNegocios.dll
+C:\inetpub\wwwroot\AppWebTiendaSalud\CapaNegocios\obj\Debug\CapaNegocios.pdb
