@@ -44,17 +44,19 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-            Proveedor.Provee_id = Convert.ToInt32(Session["Proveedor_id"].ToString());
-           Proveedor.Provee_ruc = txtruc.Text;
-           Proveedor.Provee_razons = txtname.Text;
-           Proveedor.Provee_distrito = txtdistrito.Text;
-            Proveedor.Provee_direccion = txtdireccion.Text;
+           if( txtruc.Text != "" && txtname.Text != "" && txtdistrito.Text != "" && txtdireccion.Text != "" ){
+                Proveedor.Provee_id = Convert.ToInt32(Session["Proveedor_id"].ToString());
+                Proveedor.Provee_ruc = txtruc.Text;
+                Proveedor.Provee_razons = txtname.Text;
+                Proveedor.Provee_distrito = txtdistrito.Text;
+                Proveedor.Provee_direccion = txtdireccion.Text;
 
-            functions fn = new functions();
-            Session["msg"] = fn.msg(clsProvee.Insert_Proveedores(Proveedor), "info");
-            Session["Proveedor_id"] = "0";
-            PlaceHolder1.Visible = false;
-            Response.Redirect("proveedores.aspx");
+                functions fn = new functions();
+                Session["msg"] = fn.msg(clsProvee.Insert_Proveedores(Proveedor), "info");
+                Session["Proveedor_id"] = "0";
+                PlaceHolder1.Visible = false;
+                Response.Redirect("proveedores.aspx");
+           }
 
         }
 

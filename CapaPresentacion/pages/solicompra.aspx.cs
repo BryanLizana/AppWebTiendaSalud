@@ -72,23 +72,25 @@ namespace CapaPresentacion.pages
         }
         protected void btn_addLot(object sender, EventArgs e)
         {
-            //save soli
-            Solicitud.Solicomp_id = (txtsoli_id.Text != "") ? Convert.ToInt32(txtsoli_id.Text) :0 ;            
-            Solicitud.Us_id = Convert.ToInt32(txtuser_id.Text);
-            Solicitud.Doc_type = "";
-            Solicitud.Solicomp_doc_number = txtcode.Text;
-            Solicitud.Solicomp_date = DateTime.Now;
-            Solicitud.Solicomp_estado = "PROCESO";
-            Solicitud.Solicomp_valido= Convert.ToDateTime(dtvence.SelectedDate);
+            if(txtcode.Text != "" && txtuser_id.Text != "" && txtuser.Text != ""){
+                //save soli
+                Solicitud.Solicomp_id = (txtsoli_id.Text != "") ? Convert.ToInt32(txtsoli_id.Text) :0 ;            
+                Solicitud.Us_id = Convert.ToInt32(txtuser_id.Text);
+                Solicitud.Doc_type = "";
+                Solicitud.Solicomp_doc_number = txtcode.Text;
+                Solicitud.Solicomp_date = DateTime.Now;
+                Solicitud.Solicomp_estado = "PROCESO";
+                Solicitud.Solicomp_valido= Convert.ToDateTime(dtvence.SelectedDate);
 
-            int id_soli = clsSolicomp.Insert_Solicitud_comp(Solicitud);
-            txtsoli_id.Text = Convert.ToString(id_soli);
-           
-            btnaddlot.Visible = false;
-            place_list_solicomp.Visible = false;
-            place_addlote.Visible = true;
-            clean_lot();
+                int id_soli = clsSolicomp.Insert_Solicitud_comp(Solicitud);
+                txtsoli_id.Text = Convert.ToString(id_soli);
+            
+                btnaddlot.Visible = false;
+                place_list_solicomp.Visible = false;
+                place_addlote.Visible = true;
+                clean_lot();
 
+            }
         }   
         protected void btn_addpro(object sender, EventArgs e)
         {
@@ -129,29 +131,33 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save_soli(object sender, EventArgs e)
         {
-            //save
-            //save soli
-            place_Solicomp.Visible= false;
-            btnaddSolicomp.Visible= true;
-            Solicitud.Solicomp_id = (txtsoli_id.Text != "") ? Convert.ToInt32(txtsoli_id.Text) :0 ;            
-            Solicitud.Us_id = Convert.ToInt32(txtuser_id.Text);
-            Solicitud.Doc_type = "";
-            Solicitud.Solicomp_doc_number = txtcode.Text;
-            Solicitud.Solicomp_date = DateTime.Now;
-            Solicitud.Solicomp_estado = "COMPLETADO";
-            Solicitud.Solicomp_valido= Convert.ToDateTime(dtvence.SelectedDate);
+            if( txtcode.Text != "" && txtuser_id.Text != "" && txtuser.Text != ""  ){
+                //validar dgv.count rows
+                    //save
+                    //save soli
+                    place_Solicomp.Visible= false;
+                    btnaddSolicomp.Visible= true;
+                    Solicitud.Solicomp_id = (txtsoli_id.Text != "") ? Convert.ToInt32(txtsoli_id.Text) :0 ;            
+                    Solicitud.Us_id = Convert.ToInt32(txtuser_id.Text);
+                    Solicitud.Doc_type = "";
+                    Solicitud.Solicomp_doc_number = txtcode.Text;
+                    Solicitud.Solicomp_date = DateTime.Now;
+                    Solicitud.Solicomp_estado = "COMPLETADO";
+                    Solicitud.Solicomp_valido= Convert.ToDateTime(dtvence.SelectedDate);
 
-            int id_soli = clsSolicomp.Insert_Solicitud_comp(Solicitud);
-            if (id_soli > 0){
-                clean_solip();                
+                    int id_soli = clsSolicomp.Insert_Solicitud_comp(Solicitud);
+                    if (id_soli > 0){
+                        clean_solip();                
+                    }
+
+                    Response.Redirect("solicompra.aspx");
             }
-
-            Response.Redirect("solicompra.aspx");
 
         }
         protected void btn_save_lot(object sender, EventArgs e)
         {
-            //save
+            if(txtpro_id.Text != "" && txtproducto.Text != ""  && txtLotcant.Text != "" txtLotcant.Text != "" cbalmacen.Text != ""){
+                    //save
             Lotes_pro.Lote_id =  (txtlot_id.Text != "") ? Convert.ToInt32(txtlot_id.Text) : 0;
             Lotes_pro.Pro_id = Convert.ToInt32(txtpro_id.Text);
             Lotes_pro.Lote_vence = DateTime.Now;
@@ -172,6 +178,7 @@ namespace CapaPresentacion.pages
 
             btnaddlot.Visible = true;
             place_addlote.Visible = false;
+            }
 
 
         }

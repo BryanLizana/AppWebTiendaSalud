@@ -68,12 +68,15 @@
                                                     </Columns>
                                             </asp:GridView>
 
-                                             <asp:Button ID="btn_cancel_pro" runat="server" Text="Cancelar" OnClick="btn_cancelarpro"  class='button-warning pure-button' />
+                                             <asp:Button ID="btn_cancel_list_pro" runat="server" Text="Cancelar" OnClick="btn_cancel_list_pro"  class='button-warning pure-button' />
                                         </asp:PlaceHolder>
                                      
                                 </div>
 
-                                
+                                <div class='pure-controls'>
+                                    <asp:Button ID="btncancelpro" runat="server" Text="Cancelar Lote" OnClick="btn_cancelar_pro"  class='button-warning pure-button' />
+                                    <asp:Button ID="btnsavepro" runat="server" Text="Save" OnClick="btn_save_pro"  class='button-success pure-button' />
+                                </div>
                             </div>
                      </asp:PlaceHolder>
 
@@ -92,6 +95,12 @@
                         <label >Total</label>
                         <asp:TextBox ID="txtven_total" runat="server"   Enabled="false"></asp:TextBox>
                     </div>
+
+                    <div class='pure-controls'>
+                         <asp:Button ID="btncancel" runat="server" Text="Cancelar Lote" OnClick="btn_cancelar"  class='button-warning pure-button' />
+                         <asp:Button ID="btnsave" runat="server" Text="Save" OnClick="btn_save"  class='button-success pure-button' />
+                    </div>
+
                 </div>   
             </asp:PlaceHolder>
             <asp:PlaceHolder ID="place_dgv" runat="server">

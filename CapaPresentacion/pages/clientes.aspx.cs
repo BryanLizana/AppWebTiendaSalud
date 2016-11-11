@@ -71,6 +71,8 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
+           if( txtfname.Text != ""  && txtdireccion.Text != "" && txtdistrito.Text != "" && txtdni.Text != "" && txtemail.Text != "" && txtlname.Text != "" && txtpass.Text != "" && txttel.Text != "" ){
+
             Cliente.Cli_id = Convert.ToInt32(Session["Cli_id"].ToString());
             Cliente.Cli_razon_social = txtfname.Text;
             Cliente.Cli_doc_number = txtdni.Text;
@@ -83,13 +85,18 @@ namespace CapaPresentacion.pages
             Cliente.Cli_father = "NO";
 
             Cliente.Doc_type = (cbtype.SelectedValue == "EMPRESA") ? "RUC":"DNI" ;
-           
 
             functions fn = new functions();
             Session["msg"] = fn.msg(clsClie.Insert_Clientes(Cliente), "info");
             Session["Cli_id"] = "0";
             PlaceHolder1.Visible = false;
             Response.Redirect("clientes.aspx");
+           }else  {
+            functions fn = new functions();
+            Session["msg"] = fn.msg("Campos Vacíos", "info");
+            Session["Cli_id"] = "0";
+            Response.Redirect("clientes.aspx");
+           }
 
         }
 

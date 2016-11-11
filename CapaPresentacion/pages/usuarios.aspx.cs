@@ -49,20 +49,22 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-            User.Us_id = Convert.ToInt32(Session["Other_user_id"].ToString());
-            this.User.Us_doc_number = Convert.ToInt32(txtdni.Text);
-            this.User.Us_fname = txtfname.Text;
-            this.User.Us_lname = txtlname.Text;
-            this.User.Us_direccion = txtdireccion.Text;
-            this.User.Us_distrito = txtdistrito.Text;
-            this.User.Us_password = txtpass.Text;
-            this.User.Us_type = Convert.ToInt32(cbtype.SelectedIndex) + 1;
-            this.User.Doc_type = "DNI";
-            functions fn = new functions();
-            Session["msg"] = fn.msg(clsUser.Insert_Usuarios(this.User),"info");
-            Session["Other_user_id"] = "0";
-            PlaceHolder1.Visible = false;
-            Response.Redirect("/pages/usuarios.aspx");
+            if(txtdireccion.Text != "" && txtdistrito.Text != "" txtdni.Text != "" && txtfname.Text != "" && txtlname.Text != "" && txtpass.Text != ""){
+                    User.Us_id = Convert.ToInt32(Session["Other_user_id"].ToString());
+                    this.User.Us_doc_number = Convert.ToInt32(txtdni.Text);
+                    this.User.Us_fname = txtfname.Text;
+                    this.User.Us_lname = txtlname.Text;
+                    this.User.Us_direccion = txtdireccion.Text;
+                    this.User.Us_distrito = txtdistrito.Text;
+                    this.User.Us_password = txtpass.Text;
+                    this.User.Us_type = Convert.ToInt32(cbtype.SelectedIndex) + 1;
+                    this.User.Doc_type = "DNI";
+                    functions fn = new functions();
+                    Session["msg"] = fn.msg(clsUser.Insert_Usuarios(this.User),"info");
+                    Session["Other_user_id"] = "0";
+                    PlaceHolder1.Visible = false;
+                    Response.Redirect("/pages/usuarios.aspx");
+            }
         }
 
         protected void dgv_RowDeleting(object sender, GridViewDeleteEventArgs e)

@@ -55,14 +55,7 @@ namespace CapaPresentacion.pages
 
         }
 
-        //protected void btn_cancelarcli(object sender, EventArgs e)
-        //{
-
-        //    btn_addcli.Visible = true;
-        //    place_list_cliente.Visible = false;
-
-        //}
-
+   
 
          protected void dgv_RowCommand(object sender, GridViewCommandEventArgs e)
         {

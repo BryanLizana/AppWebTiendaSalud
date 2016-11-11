@@ -58,27 +58,34 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-            Lotes_pro.Lote_id = Convert.ToInt32(Session["Lotes_pro_id"].ToString());
+          if(txtcode.Text =! "" && txtaporte.Text != "" && txtcant.Text != "" && cbalmacen.Text != "" ){
+                 Lotes_pro.Lote_id = Convert.ToInt32(Session["Lotes_pro_id"].ToString());
 
-            Lotes_pro.Lote_cod = txtcode.Text;
-            Lotes_pro.Lote_aporte = Convert .ToDouble(txtaporte.Text);
-            Lotes_pro.Lote_cant = Convert.ToInt32(txtcant.Text);
-            Lotes_pro.Lote_almacen = cbalmacen.SelectedValue;
-            Lotes_pro.Lote_vence = dtvence.SelectedDate;
-            Lotes_pro.Lote_estado = "0";
-            Lotes_pro.Solicomp_id = Convert.ToInt32(Session["Solicomp_id"].ToString());
-            Lotes_pro.Pro_id = Convert.ToInt32(Session["Producto_id"].ToString());
+                Lotes_pro.Lote_cod = txtcode.Text;
+                Lotes_pro.Lote_aporte = Convert .ToDouble(txtaporte.Text);
+                Lotes_pro.Lote_cant = Convert.ToInt32(txtcant.Text);
+                Lotes_pro.Lote_almacen = cbalmacen.SelectedValue;
+                Lotes_pro.Lote_vence = dtvence.SelectedDate;
+                Lotes_pro.Lote_estado = "0";
+                Lotes_pro.Solicomp_id = Convert.ToInt32(Session["Solicomp_id"].ToString());
+                Lotes_pro.Pro_id = Convert.ToInt32(Session["Producto_id"].ToString());
 
 
-            functions fn = new functions();
-            Session["msg"] = fn.msg(clsPro.Insert_Lotes_pro(Lotes_pro), "info");
+                functions fn = new functions();
+                Session["msg"] = fn.msg(clsPro.Insert_Lotes_pro(Lotes_pro), "info");
 
-            Session["Solicomp_id"] = "0";
+                Session["Solicomp_id"] = "0";
 
-            Session["Producto_id"] = "0";
-            Session["Lotes_pro_id"] = "0";
-            PlaceHolder1.Visible = false;
-            Response.Redirect("/pages/lotes.aspx");
+                Session["Producto_id"] = "0";
+                Session["Lotes_pro_id"] = "0";
+                PlaceHolder1.Visible = false;
+                Response.Redirect("/pages/lotes.aspx");
+          }else{
+               functions fn = new functions();
+                Session["msg"] = fn.msg("Campos vacíos", "info");
+
+                Response.Redirect("/pages/lotes.aspx");
+          }
         }
 
         protected void dgv_RowDeleting(object sender, GridViewDeleteEventArgs e)

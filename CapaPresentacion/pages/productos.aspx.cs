@@ -48,18 +48,20 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-            Producto.Pro_id = Convert.ToInt32(Session["Producto_id"].ToString());
-            Producto.Pro_name_comercial = txtname_co.Text;
-            Producto.Pro_name = txtname.Text;
-            Producto.Pro_precio_uni =    Convert.ToDouble(txtpreciou.Text);
-            Producto.Pro_precio_may = Convert.ToDouble(txtpreciom.Text);
-            Producto.Pro_procedencia = txtprocedencia.Text;
-            Producto.Pro_type = cbtype.SelectedValue;
-            functions fn = new functions();
-            Session["msg"] = fn.msg(clsPro.Insert_Productos(Producto), "info");
-            Session["Producto_id"] = "0";
-            PlaceHolder1.Visible = false;
-            Response.Redirect("/pages/productos.aspx");
+            if (txtname.Text != "" && txtname_co.Text != "" txtpreciom.Text != "" && txtpreciou.Text != "" && txtprocedencia.Text != "" && cbtype.Text != "" ){
+                    Producto.Pro_id = Convert.ToInt32(Session["Producto_id"].ToString());
+                    Producto.Pro_name_comercial = txtname_co.Text;
+                    Producto.Pro_name = txtname.Text;
+                    Producto.Pro_precio_uni =    Convert.ToDouble(txtpreciou.Text);
+                    Producto.Pro_precio_may = Convert.ToDouble(txtpreciom.Text);
+                    Producto.Pro_procedencia = txtprocedencia.Text;
+                    Producto.Pro_type = cbtype.SelectedValue;
+                    functions fn = new functions();
+                    Session["msg"] = fn.msg(clsPro.Insert_Productos(Producto), "info");
+                    Session["Producto_id"] = "0";
+                    PlaceHolder1.Visible = false;
+                    Response.Redirect("/pages/productos.aspx");
+            }
         }
 
         protected void dgv_RowDeleting(object sender, GridViewDeleteEventArgs e)
