@@ -75,8 +75,8 @@
      
         <asp:GridView ID="dgv" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowDeleting="dgv_RowDeleting" OnRowEditing="dgv_RowEditing" OnRowCommand="dgv_RowCommand">
             <Columns>
-                <!--<asp:CommandField AccessibleHeaderText="btndelete" InsertVisible="False" ShowDeleteButton="True" />
-                <asp:CommandField DeleteText="Editar" ShowDeleteButton="True" />-->
+                <%--<asp:CommandField AccessibleHeaderText="btndelete" InsertVisible="False" ShowDeleteButton="True" />
+                <asp:CommandField DeleteText="Editar" ShowDeleteButton="True" />--%>
                 <asp:buttonfield buttontype="Link"  commandname="editar" headertext="" text="Editar"/>
                 <asp:buttonfield buttontype="Link"   commandname="eliminar" headertext="" text="Eliminar"/>
 

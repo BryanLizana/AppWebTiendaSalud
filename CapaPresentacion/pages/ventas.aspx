@@ -12,9 +12,11 @@
                 Response.Write( Session["msg"].ToString());
                     Session["msg"] = "0";
                 }   %>
-            <asp:PlaceHolder ID="place_edit_venta" runat="server">
+            <asp:PlaceHolder ID="place_edit_venta" runat="server" Visible="false">
                  <div class='pure-form pure-form-aligned' >
                     <asp:TextBox ID="txtven_id" runat="server"   visible="false"></asp:TextBox>
+                    <asp:TextBox ID="txtprof_id" runat="server"   visible="false"></asp:TextBox>
+
                     <div class='pure-control-group'>
                         <label >Code</label>
                         <asp:TextBox ID="txtcode" runat="server"  MaxLength="30" Enabled="false"></asp:TextBox>
@@ -35,54 +37,63 @@
                         </div>
                     </div>
 
-                       <div>
                                                     
-                    <asp:PlaceHolder ID="place_list_cliente" runat="server" Visible="false">
-                        <br />
-                        <asp:GridView ID="dgv_list_client" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_client_RowCommand" >
+                            <asp:PlaceHolder ID="place_list_cliente" runat="server" Visible="false">
+                                <br />
+                                <asp:GridView ID="dgv_list_client" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_client_RowCommand" >
+                                    <Columns>
+                                            <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
+                                        </Columns>
+                                 </asp:GridView>
+
+                               <asp:Button ID="btn_cancel_cli" runat="server" Text="Cancelar" OnClick="btn_cancelarcli"  class='button-warning pure-button' />
+                            </asp:PlaceHolder>
+
+                       <div class='pure-control-group'>
+                             <asp:Button ID="btn_add_pro" runat="server" Text="Añadir Producto" OnClick="btn_addpro"  class='button-success pure-button' />
+                        </div>
+                     <hr />
+                            <asp:PlaceHolder ID="place_edit_pro" runat="server" Visible="false">
+                                    <div class='pure-form pure-form-aligned' >
+                                        <div class='pure-control-group'>
+                                            <label >Producto</label>
+                                            <asp:TextBox ID="txtpro_id" runat="server"  MaxLength="30" visible="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtpro_name" runat="server"  MaxLength="30" Enabled="false"></asp:TextBox>
+                                        </div>
+
+                                        <div class='pure-control-group'>
+                                            <label >Cantidad</label>
+                                            <asp:TextBox ID="txtpro_cant" runat="server" ></asp:TextBox>
+                                        </div>
+                                         <div class='pure-control-group'>
+                                                <asp:PlaceHolder ID="place_list_pro" runat="server" Visible="false">
+                                                    <br />
+                                                    <asp:GridView ID="dgv_list_pro" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_pro_RowCommand" >
+                                                        <Columns>
+                                                                <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
+                                                            </Columns>
+                                                    </asp:GridView>
+
+                                               </asp:PlaceHolder>
+                                     
+                                        </div>
+
+                                        <div class='pure-controls'>
+                                            <asp:Button ID="btncancelpro" runat="server" Text="Cancelar" OnClick="btn_cancelar_pro"  class='button-warning pure-button' />
+                                            <asp:Button ID="btnsavepro" runat="server" Text="Save" OnClick="btn_save_pro"  class='button-success pure-button' />
+                                        </div>
+                                    </div>
+                             </asp:PlaceHolder>
+
+                   
+                     <div class='pure-control-group'>
+                          <span>Productos de la compra</span>
+                        <asp:GridView ID="dgv_list_profo_detalle" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_profo_detalle_RowCommand" >
                             <Columns>
                                     <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
                                 </Columns>
-                         </asp:GridView>
-
-                       <asp:Button ID="btn_cancel_cli" runat="server" Text="Cancelar" OnClick="btn_cancelarcli"  class='button-warning pure-button' />
-                    </asp:PlaceHolder>
-                    <asp:PlaceHolder ID="place_edit_pro" runat="server" Visible="false">
-                            <div class='pure-form pure-form-aligned' >
-                                <div class='pure-control-group'>
-                                    <label >Producto</label>
-                                    <asp:TextBox ID="txtpro_id" runat="server"  MaxLength="30" visible="false"></asp:TextBox>
-                                    <asp:TextBox ID="txtpro_name" runat="server"  MaxLength="30" Enabled="false"></asp:TextBox>
-                                </div>
-
-                                <div class='pure-control-group'>
-                                    <label >Cantidad</label>
-                                    <asp:TextBox ID="txtpro_cant" runat="server" ></asp:TextBox>
-                                </div>
-                                 <div class='pure-control-group'>
-                                        <asp:PlaceHolder ID="place_list_pro" runat="server" Visible="false">
-                                            <br />
-                                            <asp:GridView ID="dgv_list_pro" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_pro_RowCommand" >
-                                                <Columns>
-                                                        <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
-                                                    </Columns>
-                                            </asp:GridView>
-
-                                             <asp:Button ID="btn_cancel_list_pro" runat="server" Text="Cancelar" OnClick="btn_cancel_list_pro"  class='button-warning pure-button' />
-                                        </asp:PlaceHolder>
-                                     
-                                </div>
-
-                                <div class='pure-controls'>
-                                    <asp:Button ID="btncancelpro" runat="server" Text="Cancelar Lote" OnClick="btn_cancelar_pro"  class='button-warning pure-button' />
-                                    <asp:Button ID="btnsavepro" runat="server" Text="Save" OnClick="btn_save_pro"  class='button-success pure-button' />
-                                </div>
-                            </div>
-                     </asp:PlaceHolder>
-
-                    <span>Productos de la compra</span>
-
-
+                        </asp:GridView>  
+                      </div>
                      <div class='pure-control-group'>
                         <label >Sub Total</label>
                         <asp:TextBox ID="txtven_subto" runat="server"   Enabled="false"></asp:TextBox>
@@ -97,14 +108,20 @@
                     </div>
 
                     <div class='pure-controls'>
-                         <asp:Button ID="btncancel" runat="server" Text="Cancelar Lote" OnClick="btn_cancelar"  class='button-warning pure-button' />
+                         <asp:Button ID="btncancel" runat="server" Text="Cancelar" OnClick="btn_cancelar"  class='button-warning pure-button' />&nbsp
                          <asp:Button ID="btnsave" runat="server" Text="Save" OnClick="btn_save"  class='button-success pure-button' />
                     </div>
+                
 
-                </div>   
+            </div>   
             </asp:PlaceHolder>
             <asp:PlaceHolder ID="place_dgv" runat="server">
+                 <div class='pure-u-1-2'>
+                             <asp:Button ID="btn_add_venta" runat="server" Text="Crear Venta" OnClick="btn_add_ven"  class='button-success pure-button' />
+                </div>
+                <br /> <br />
                 <span>Listado de Ventas</span>
+                
                 <asp:GridView ID="dgv" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_RowCommand">
                     <Columns>
                     <asp:buttonfield buttontype="Link"  commandname="editar" headertext="" text="Editar"/>
@@ -119,31 +136,5 @@
         </form>
        
     </div>
-
-
-
-     <%-- <div class='pure-control-group'>
-                                                <asp:Button ID="btn_addcli" runat="server" Text="Añadir Cliente" OnClick="btn_add_cli"  class='button-success pure-button' />
-                                                </div>
-
-                                                <div class='pure-control-group'>
-                                                      <label for='password'>Cliente</label>
-                                                    <asp:TextBox ID="txtcli_id" runat="server"  MaxLength="50" Visible="false"></asp:TextBox>
-
-                                                    <asp:TextBox ID="txtcli" runat="server"  MaxLength="50" Enabled="false"></asp:TextBox>
-                                                </div>
-                                                <div>
-                                                    
-                                                    <asp:PlaceHolder ID="place_list_cliente" runat="server" Visible="false">
-                                                        <br />
-                                                        <asp:GridView ID="dgv_list_client" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_client_RowCommand" >
-                                                            <Columns>
-                                                                  <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
-                                                             </Columns>
-                                                    </asp:GridView>
-
-                                                    <asp:Button ID="btn_cancel_cli" runat="server" Text="Cancelar" OnClick="btn_cancelarcli"  class='button-warning pure-button' />
-                                                    </asp:PlaceHolder>
-                                 </div>--%>
 
 </asp:Content>

@@ -48,7 +48,7 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-            if (txtname.Text != "" && txtname_co.Text != "" txtpreciom.Text != "" && txtpreciou.Text != "" && txtprocedencia.Text != "" && cbtype.Text != "" ){
+            if (txtname.Text != "" && txtname_co.Text != "" && txtpreciom.Text != "" && txtpreciou.Text != "" && txtprocedencia.Text != "" && cbtype.Text != "" ){
                     Producto.Pro_id = Convert.ToInt32(Session["Producto_id"].ToString());
                     Producto.Pro_name_comercial = txtname_co.Text;
                     Producto.Pro_name = txtname.Text;

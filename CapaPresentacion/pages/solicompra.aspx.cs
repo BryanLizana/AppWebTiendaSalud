@@ -156,7 +156,7 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save_lot(object sender, EventArgs e)
         {
-            if(txtpro_id.Text != "" && txtproducto.Text != ""  && txtLotcant.Text != "" txtLotcant.Text != "" cbalmacen.Text != ""){
+            if(txtpro_id.Text != "" && txtproducto.Text != ""  && txtLotcant.Text != "" && txtLotcant.Text != "" && cbalmacen.Text != ""){
                     //save
             Lotes_pro.Lote_id =  (txtlot_id.Text != "") ? Convert.ToInt32(txtlot_id.Text) : 0;
             Lotes_pro.Pro_id = Convert.ToInt32(txtpro_id.Text);

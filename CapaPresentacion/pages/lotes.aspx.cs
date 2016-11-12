@@ -58,7 +58,7 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-          if(txtcode.Text =! "" && txtaporte.Text != "" && txtcant.Text != "" && cbalmacen.Text != "" ){
+          if(txtcode.Text != "" && txtaporte.Text != "" && txtcant.Text != "" && cbalmacen.Text != "" ){
                  Lotes_pro.Lote_id = Convert.ToInt32(Session["Lotes_pro_id"].ToString());
 
                 Lotes_pro.Lote_cod = txtcode.Text;

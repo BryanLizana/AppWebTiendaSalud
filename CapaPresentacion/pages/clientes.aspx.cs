@@ -71,7 +71,7 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-           if( txtfname.Text != ""  && txtdireccion.Text != "" && txtdistrito.Text != "" && txtdni.Text != "" && txtemail.Text != "" && txtlname.Text != "" && txtpass.Text != "" && txttel.Text != "" ){
+           if( txtfname.Text != ""  && txtdireccion.Text != "" && txtdistrito.Text != "" && txtdni.Text != "" && txtemail.Text != "" && txtfname.Text != "" &&  txttel.Text != "" ){
 
             Cliente.Cli_id = Convert.ToInt32(Session["Cli_id"].ToString());
             Cliente.Cli_razon_social = txtfname.Text;

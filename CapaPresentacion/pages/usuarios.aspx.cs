@@ -49,7 +49,7 @@ namespace CapaPresentacion.pages
         }
         protected void btn_save(object sender, EventArgs e)
         {
-            if(txtdireccion.Text != "" && txtdistrito.Text != "" txtdni.Text != "" && txtfname.Text != "" && txtlname.Text != "" && txtpass.Text != ""){
+            if(txtdireccion.Text != "" && txtdistrito.Text != "" && txtdni.Text != "" && txtfname.Text != "" && txtlname.Text != "" && txtpass.Text != ""){
                     User.Us_id = Convert.ToInt32(Session["Other_user_id"].ToString());
                     this.User.Us_doc_number = Convert.ToInt32(txtdni.Text);
                     this.User.Us_fname = txtfname.Text;
