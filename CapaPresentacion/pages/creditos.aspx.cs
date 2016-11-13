@@ -15,12 +15,25 @@ namespace CapaPresentacion.pages
         cls_Creditos Credito = new cls_Creditos();
         
         public void load(){
-        
+
+            Credito.Cre_id = 0;
+            dgv_list_cre.DataSource = clsCre.List_Creditos(Credito);
+            dgv_list_cre.DataBind();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             load();
+        }
+
+        protected void dgv_list_cre_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }   
+
+        protected void btn_cancel_provee(object sender, EventArgs e)
+        {
+
         }
     }
 }

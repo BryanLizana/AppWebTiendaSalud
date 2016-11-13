@@ -105,7 +105,7 @@
                                                 </asp:DropDownList>
                                                 </div>
                                                <div class='pure-controls'>
-                                                <asp:Button ID="btnlotcancelar" runat="server" Text="Cancelar Lote" OnClick="btn_cancelar_lot"  class='button-warning pure-button' />
+                                                <asp:Button ID="btnlotcancelar" runat="server" Text="Cancelar Lote" OnClick="btn_cancelar_lot"  class='button-warning pure-button' />&nbsp
                                                 <asp:Button ID="btnlotsave" runat="server" Text="Save" OnClick="btn_save_lot"  class='button-success pure-button' />
                                                 </div>
                                            </fieldset>
@@ -114,9 +114,9 @@
                                           
                                 </asp:PlaceHolder>
                                 <hr />
-                                <h3 >Lotes de la Solicitud</h3>
                                 <%--//list de Lotes asociados --%>
-                                        <br />
+                                <span >Lotes de la Solicitud</span>
+
                                 <asp:GridView ID="dgv_list_lotes_to_solicomp" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True"  OnRowCommand="dgv_list_lotes_to_solicomp_RowCommand" >
                                     <Columns>
                                          <asp:buttonfield buttontype="Link"  commandname="editar" headertext="" text="Editar"/>

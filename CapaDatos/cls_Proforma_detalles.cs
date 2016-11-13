@@ -25,7 +25,7 @@ namespace CapaDatos
                 cmd.Connection = conx;
                 cmd.CommandText = "sp_Insert_Proforma_detalles";
                 cmd.Parameters.Add("@pref_id", SqlDbType.Int).Value = Proforma_detalles.Pref_id;
-                cmd.Parameters.Add("@lote_id", SqlDbType.Int).Value = Proforma_detalles.Pref_id;                
+                cmd.Parameters.Add("@lote_id", SqlDbType.Int).Value = Proforma_detalles.Lote_id;                
                 cmd.Parameters.Add("@pro_id", SqlDbType.Int).Value = Proforma_detalles.Pro_id;
                 cmd.Parameters.Add("@cant", SqlDbType.Int).Value = Proforma_detalles.Cant;
                 cmd.Parameters.Add("@importe", SqlDbType.Decimal).Value = Proforma_detalles.Importe;

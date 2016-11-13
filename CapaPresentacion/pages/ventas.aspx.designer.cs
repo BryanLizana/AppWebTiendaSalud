@@ -157,6 +157,15 @@ namespace CapaPresentacion.pages {
         protected global::System.Web.UI.WebControls.TextBox txtpro_id;
         
         /// <summary>
+        /// Control txtlot_id.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtlot_id;
+        
+        /// <summary>
         /// Control txtpro_name.
         /// </summary>
         /// <remarks>
@@ -164,6 +173,15 @@ namespace CapaPresentacion.pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtpro_name;
+        
+        /// <summary>
+        /// Control txtpro_importe.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtpro_importe;
         
         /// <summary>
         /// Control txtpro_cant.
@@ -265,22 +283,58 @@ namespace CapaPresentacion.pages {
         protected global::System.Web.UI.WebControls.Button btnsave;
         
         /// <summary>
-        /// Control btncancelar.
+        /// Control place_credito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btncancelar;
+        protected global::System.Web.UI.WebControls.PlaceHolder place_credito;
         
         /// <summary>
-        /// Control Button1.
+        /// Control txtcre_id.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtcre_id;
+        
+        /// <summary>
+        /// Control cbmes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbmes;
+        
+        /// <summary>
+        /// Control txtcre_mensual.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcre_mensual;
+        
+        /// <summary>
+        /// Control txtcre_interes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcre_interes;
+        
+        /// <summary>
+        /// Control btn_save_cre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_save_cre;
         
         /// <summary>
         /// Control place_dgv.

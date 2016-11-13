@@ -38,14 +38,47 @@ namespace CapaPresentacion.pages
             dgv_list_compra.DataBind();
         }
 
+        public void cal_total()
+        {
+            double total = 0;
+
+            for (int i = 0; i < dgv_list_lotes.Rows.Count; i++)
+            {
+                GridViewRow dgv_list_lotes_row = dgv_list_lotes.Rows[i];
+                total += Convert.ToDouble(dgv_list_lotes_row.Cells[8].Text);
+            }
+
+            txtsubto.Text = total.ToString("0#.##");
+            txtigv.Text = (total * 0.18).ToString("0#.##");
+            txttotal.Text = (total * 1.18).ToString("0#.##");
+        }
+
 
         public void clean_compra()
         {
-
+            txtcompraid.Text = "";
+            txtcode.Text = "";
+            txtaporte.Text = "";
+            txtcre_id.Text = "";
+            txtcre_interes.Text = "";
+            txtcre_mensual.Text = "";
+            txtigv.Text = "";
+            txtLotcant.Text = "";
+            txtLotcode.Text = "";
+            txtlot_id.Text = "";
+            txtproducto.Text = "";
+            txtprovee.Text = "";
+            txtprovee_id.Text = "";
+            txtpro_id.Text = "";
+            txtsolicompid.Text = "";
+            txtsubto.Text = "";
+            txttotal.Text = "";
+            txtuser_solicomp.Text = "";
         }
         public void clean_provee()
-        {   
-
+        {
+            txtprovee.Text = "";
+            txtprovee_id.Text = "";
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -70,30 +103,20 @@ namespace CapaPresentacion.pages
                 GridViewRow dgvrow = dgv.Rows[index];
                 if (e.CommandName == "comprar")
                 {
-
-                //clean compra
+                clean_compra();
 
                 txtuser_id.Text = Session["User_id"].ToString();
                 txtuser.Text = Session["User_code"].ToString();
 
                 place_compra.Visible = true;
+                place_list_solicomp.Visible = false;
 
                 Lotes_pro.Lote_id = 0;
                 Lotes_pro.Solicomp_id = Convert.ToInt32(dgvrow.Cells[1].Text);
                 dgv_list_lotes.DataSource = clsLotPro.List_Lotes_pro(Lotes_pro);
                 dgv_list_lotes.DataBind();
 
-                double total = 0;
-
-                for (int i = 0; i < dgv_list_lotes.Rows.Count; i++)
-                {   
-                    GridViewRow dgv_list_lotes_row = dgv_list_lotes.Rows[i];
-                    total += Convert.ToDouble(dgv_list_lotes_row.Cells[8].Text);
-                }
-
-                txtsubto.Text = total.ToString("0#.##");
-                txtigv.Text = (total * 0.18).ToString("0#.##");
-                txttotal.Text = (total * 1.18).ToString("0#.##");
+                cal_total();
 
 
                 txtsolicompid.Text = dgvrow.Cells[1].Text;
@@ -131,8 +154,8 @@ namespace CapaPresentacion.pages
 
         protected void btn_cancel_provee(object sender, EventArgs e)
         {
-            // clean proveedor 
 
+            clean_provee();
             place_list_provee.Visible = false;
             btn_addprovee.Visible = true;      
         }
@@ -195,8 +218,8 @@ namespace CapaPresentacion.pages
                 dgv_list_lotes.DataSource = clsLotPro.List_Lotes_pro(Lotes_pro);
                 dgv_list_lotes.DataBind();
                 clean_lot();
-                
                 place_edit_lot.Visible = false;
+                cal_total();
             }
 
             
@@ -205,19 +228,53 @@ namespace CapaPresentacion.pages
         protected void dgv_list_compra_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_lotes.Rows[index];
+            GridViewRow dgvrow = dgv_list_compra.Rows[index];
             if (e.CommandName == "editar")
             {
                 place_compra.Visible = true;
                 place_list_solicomp.Visible = false;
+                txtcompraid.Text = dgvrow.Cells[1].Text;
+
+
+                Compra.Comp_id = Convert.ToInt32(dgvrow.Cells[1].Text);
+                DataTable dt = clsComp.List_Compras(Compra);
+                DataRow dr = dt.Rows[0];
+
+                txtcode.Text = dgvrow.Cells[8].Text;
+                txtcre_id.Text = dgvrow.Cells[9].Text;
+                txtprovee.Text = dgvrow.Cells[3].Text;
+                txtprovee_id.Text = dr[2].ToString();
+                txtsolicompid.Text = dr[5].ToString();
+                //data cre
+                Credito.Cre_id = Convert.ToInt32(dgvrow.Cells[9].Text);
+                DataTable dt_cre =  clsCredito.List_Creditos(Credito);
+                DataRow dr_cre = dt_cre.Rows[0];
+
+                txtigv.Text = dr_cre[4].ToString();
+                txtsubto.Text = dr_cre[3].ToString();
+                txttotal.Text = dr_cre[5].ToString();
+
+                cbmes.SelectedValue = dr_cre[1].ToString();
+
+                txtuser_id.Text = Session["User_id"].ToString();
+                txtuser.Text = Session["User_code"].ToString();
+
+
+                Lotes_pro.Lote_id = 0;
+                Lotes_pro.Solicomp_id = Convert.ToInt32(dr[5].ToString());
+                //Lotes_pro.mode = 1; 
+                dgv_list_lotes.DataSource = clsLotPro.List_Lotes_pro(Lotes_pro);
+                dgv_list_lotes.DataBind();
+
 
             }
         }
 
         protected void btn_cancelar(object sender, EventArgs e)
         {
-            //clean compra
+            clean_compra();
             place_compra.Visible = false;
+            place_list_solicomp.Visible = true;
         }
         protected void btn_save(object sender, EventArgs e)
         {
@@ -255,14 +312,16 @@ namespace CapaPresentacion.pages
                     clsComp.Insert_Compras(Compra);
 
                     place_credito.Visible = false;
+                    place_list_solicomp.Visible = true;
                     btnsave.Visible = true;
-                    //clean compra
+                    clean_compra();
                     Response.Redirect("compras.aspx");
 
                 }
             }
             else
             {
+                add_data_cre();
                 place_credito.Visible = true;
                 btnsave.Visible = false;
 
@@ -270,15 +329,27 @@ namespace CapaPresentacion.pages
 
         }
 
-        protected void cbmes_SelectedIndexChanged(object sender, EventArgs e)
+
+        public void add_data_cre()
         {
             //crev
 
             int mes = Convert.ToInt32(cbmes.SelectedValue.ToString());
 
-            txtcre_interes.Text = ((Convert.ToDouble(txttotal.Text) / mes) * 0.5).ToString("0#.##");
-            txtcre_mensual.Text = ((Convert.ToDouble(txttotal.Text) / mes) * 1.5).ToString("0#.##");
-
+            if (mes != 1)
+            {
+                txtcre_interes.Text = ((Convert.ToDouble(txttotal.Text) / mes) * 0.05).ToString("0#.##");
+                txtcre_mensual.Text = ((Convert.ToDouble(txttotal.Text) / mes) * 1.05).ToString("0#.##");
+            }
+            else
+            {
+                txtcre_interes.Text = "0";
+                txtcre_mensual.Text = "0";
+            }
+        }
+        protected void cbmes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            add_data_cre();
 
         }
     }

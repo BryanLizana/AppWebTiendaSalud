@@ -138,7 +138,7 @@
                     </div>
 
                  <div class='pure-controls'>
-                    <asp:Button ID="btncancel" runat="server" Text="Cancelar Lote" OnClick="btn_cancelar"  class='button-warning pure-button' />&nbsp
+                    <asp:Button ID="btncancel" runat="server" Text="Cancelar" OnClick="btn_cancelar"  class='button-warning pure-button' />&nbsp
                     <asp:Button ID="btnsave" runat="server" Text="Save" OnClick="btn_save"  class='button-success pure-button' />
                  </div>
                 <br />

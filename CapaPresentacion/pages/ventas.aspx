@@ -19,7 +19,7 @@
 
                     <div class='pure-control-group'>
                         <label >Code</label>
-                        <asp:TextBox ID="txtcode" runat="server"  MaxLength="30" Enabled="false"></asp:TextBox>
+                        <asp:TextBox ID="txtcode" runat="server"  MaxLength="30" ></asp:TextBox>
                     </div>
                     <div class='pure-control-group'>
                         <label >User</label>
@@ -45,8 +45,9 @@
                                             <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
                                         </Columns>
                                  </asp:GridView>
-
-                               <asp:Button ID="btn_cancel_cli" runat="server" Text="Cancelar" OnClick="btn_cancelarcli"  class='button-warning pure-button' />
+                                 <br />
+                               <asp:Button ID="btn_cancel_cli" runat="server" Text="Cancelar List Client" OnClick="btn_cancelarcli"  class='button-warning pure-button' />
+                                <br />   <br />
                             </asp:PlaceHolder>
 
                        <div class='pure-control-group'>
@@ -58,9 +59,14 @@
                                         <div class='pure-control-group'>
                                             <label >Producto</label>
                                             <asp:TextBox ID="txtpro_id" runat="server"  MaxLength="30" visible="false"></asp:TextBox>
-                                            <asp:TextBox ID="txtpro_name" runat="server"  MaxLength="30" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtlot_id" runat="server"   visible="false"></asp:TextBox>
+                                           
+                                             <asp:TextBox ID="txtpro_name" runat="server"  MaxLength="30" Enabled="false"></asp:TextBox>
                                         </div>
-
+                                          <div class='pure-control-group'>
+                                            <label >Importe</label>
+                                            <asp:TextBox ID="txtpro_importe" runat="server" ></asp:TextBox>
+                                        </div>
                                         <div class='pure-control-group'>
                                             <label >Cantidad</label>
                                             <asp:TextBox ID="txtpro_cant" runat="server" ></asp:TextBox>
@@ -79,12 +85,12 @@
                                         </div>
 
                                         <div class='pure-controls'>
-                                            <asp:Button ID="btncancelpro" runat="server" Text="Cancelar" OnClick="btn_cancelar_pro"  class='button-warning pure-button' />
+                                            <asp:Button ID="btncancelpro" runat="server" Text="Cancelar" OnClick="btn_cancelar_pro"  class='button-warning pure-button' />&nbsp
                                             <asp:Button ID="btnsavepro" runat="server" Text="Save" OnClick="btn_save_pro"  class='button-success pure-button' />
                                         </div>
                                     </div>
                              </asp:PlaceHolder>
-
+                              
                    
                      <div class='pure-control-group'>
                           <span>Productos de la compra</span>
@@ -111,7 +117,39 @@
                          <asp:Button ID="btncancel" runat="server" Text="Cancelar" OnClick="btn_cancelar"  class='button-warning pure-button' />&nbsp
                          <asp:Button ID="btnsave" runat="server" Text="Save" OnClick="btn_save"  class='button-success pure-button' />
                     </div>
-                
+                <%--Form de crédito--%>
+                                    <asp:PlaceHolder ID="place_credito" runat="server" Visible ="false"><br />
+                                        <asp:TextBox ID="txtcre_id" runat="server" Visible="false"></asp:TextBox>                
+                                        <div class='pure-control-group'>
+                                        <label for='foo'>Plazos</label>
+                                                <asp:DropDownList ID="cbmes" runat="server" OnSelectedIndexChanged="cbmes_SelectedIndexChanged" AutoPostBack="true">
+                                                        <asp:ListItem Value="1">1</asp:ListItem>
+                                                        <asp:ListItem Value="2">2</asp:ListItem>
+                                                        <asp:ListItem Value="3">3</asp:ListItem>
+                                                        <asp:ListItem Value="4">4</asp:ListItem>
+                                                        <asp:ListItem Value="5">5</asp:ListItem>
+                                                        <asp:ListItem Value="6">6</asp:ListItem>
+                                                        <asp:ListItem Value="7">7</asp:ListItem>
+                                                        <asp:ListItem Value="8">8</asp:ListItem>
+                                                        <asp:ListItem Value="9">9</asp:ListItem>
+                                                        <asp:ListItem Value="10">10</asp:ListItem>
+                                                        <asp:ListItem Value="11">11</asp:ListItem>
+                                                        <asp:ListItem Value="12">12</asp:ListItem>
+
+                                                </asp:DropDownList>
+                                        </div>
+                                        <div class='pure-control-group'>
+                                        <label for='foo'>Pago Mensual</label>
+                                        <asp:TextBox ID="txtcre_mensual" runat="server" ></asp:TextBox>
+                                        </div>
+                                        <div class='pure-control-group'>
+                                        <label for='foo'>Iterés Mensual (5%)</label>
+                                        <asp:TextBox ID="txtcre_interes" runat="server" ></asp:TextBox>
+                                        </div>
+                                     <div class='pure-controls'>
+                                            <asp:Button ID="btn_save_cre" runat="server" Text="Save" OnClick="btn_save"  class='button-success pure-button' />              
+                                     </div>
+                                    </asp:PlaceHolder>
 
             </div>   
             </asp:PlaceHolder>
