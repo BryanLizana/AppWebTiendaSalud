@@ -58,7 +58,9 @@ namespace CapaPresentacion.pages
                 Response.Redirect("proveedores.aspx");
            }else
            {
-               //empty
+               functions fn = new functions();
+                    Session["msg"] = fn.msg("Campos Vacíos", "info");
+                    Response.Redirect("proveedores.aspx");
            }
 
         }

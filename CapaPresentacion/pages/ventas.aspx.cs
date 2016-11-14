@@ -192,7 +192,9 @@ namespace CapaPresentacion.pages
             }
             else
             {
-                //empty
+                functions fn = new functions();
+                    Session["msg"] = fn.msg("Campos Vacíos", "info");
+                    Response.Redirect("ventas.aspx");
                
             }
         }
@@ -242,7 +244,9 @@ namespace CapaPresentacion.pages
                 }
                 else
                 {
-                    //empty
+                    functions fn = new functions();
+                    Session["msg"] = fn.msg("Campos Vacíos", "info");
+                    Response.Redirect("ventas.aspx");
                 }
 
                 

@@ -202,7 +202,9 @@ namespace CapaPresentacion.pages
             place_addlote.Visible = false;
             }else
             {
-                //empty
+                functions fn = new functions();
+                    Session["msg"] = fn.msg("Campos Vacíos", "info");
+                    Response.Redirect("solicompra.aspx");
             }
 
 
