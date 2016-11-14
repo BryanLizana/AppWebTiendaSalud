@@ -73,7 +73,7 @@
 
         <asp:GridView ID="dgv" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowDeleting="dgv_RowDeleting" OnRowEditing="dgv_RowEditing">
             <Columns>
-                <asp:CommandField AccessibleHeaderText="btndelete" InsertVisible="False" ShowDeleteButton="True" />
+                <asp:CommandField AccessibleHeaderText="btndelete" InsertVisible="False" ShowDeleteButton="True" Visible="false" />
                 <asp:CommandField DeleteText="Editar" ShowDeleteButton="True"  />
             </Columns>
         </asp:GridView>

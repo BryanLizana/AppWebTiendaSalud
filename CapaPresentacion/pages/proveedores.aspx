@@ -27,12 +27,12 @@
                    
                 <div class='pure-control-group'>
                     <label for='name'>RUC</label> 
-                    <asp:TextBox ID="txtruc" runat="server"  MaxLength="11"></asp:TextBox>
+                    <asp:TextBox ID="txtruc" runat="server"  MaxLength="20"></asp:TextBox>
                 </div>
 
                 <div class='pure-control-group'>
                     <label for='password'>Razón Social</label>
-                    <asp:TextBox ID="txtname" runat="server" placeholder='Razon Social' MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="txtname" runat="server" placeholder='Razon Social' MaxLength="120"></asp:TextBox>
 
                 </div>
 

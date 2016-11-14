@@ -27,7 +27,7 @@
                     <div class='pure-control-group'>
                              
                         <label> <asp:Label ID="lbdni" runat="server">DNI</asp:Label></label>
-                        <asp:TextBox ID="txtdni" runat="server"  MaxLength="9"></asp:TextBox>
+                        <asp:TextBox ID="txtdni" runat="server"  MaxLength="20"></asp:TextBox>
                     </div>
 
                     <div class='pure-control-group'>
@@ -37,26 +37,26 @@
 
 
                 <div class='pure-control-group'>
-                    <label for='foo'>Distrito</label>
+                    <label >Distrito</label>
                     <asp:TextBox ID="txtdistrito" runat="server" placeholder='Distrito'  MaxLength="30"></asp:TextBox>
                 </div>
 
                 <div class='pure-control-group'>
-                    <label for='foo'>Direccion</label>
+                    <label >Direccion</label>
                     <asp:TextBox ID="txtdireccion" runat="server" placeholder='Direcciòn'  ></asp:TextBox>
                 </div>
                 <div class='pure-control-group'>
-                    <label for='foo'>Telefono</label>
-                    <asp:TextBox ID="txttel" runat="server" placeholder='Direcciòn' MaxLength="20" ></asp:TextBox>
+                    <label >Telefono</label>
+                    <asp:TextBox ID="txttel" runat="server" placeholder='phone' MaxLength="20" ></asp:TextBox>
                 </div>
           
                  <div class='pure-control-group'>
-                    <label for='foo'>Email</label>
-                    <asp:TextBox ID="txtemail" runat="server" placeholder='Direcciòn'  ></asp:TextBox>
+                    <label >Email</label>
+                    <asp:TextBox ID="txtemail" runat="server" placeholder='email'  ></asp:TextBox>
                 </div>
 
                   <div class='pure-control-group'>
-                    <label for='foo'>TypeUser</label>
+                    <label >TypeUser</label>
                      <asp:DropDownList ID="cbtype" runat="server" OnSelectedIndexChanged="cbtype_SelectedIndexChanged" AutoPostBack="True">
                          <asp:ListItem Value="PERSONA">Persona</asp:ListItem>
                          <asp:ListItem Value="EMPRESA">Empresa</asp:ListItem>
@@ -72,7 +72,7 @@
         
         <br />  <br />
          <div class='pure-control-group'>
-         <label for='foo'>Tipo de listado de Ciente</label>
+         <label >Tipo de listado de Ciente</label>
                 <asp:DropDownList ID="cblisttype" runat="server" OnSelectedIndexChanged="cblisttype_SelectedIndexChanged" AutoPostBack="True">
                     <asp:ListItem Value="PERSONA">Persona</asp:ListItem>
                     <asp:ListItem Value="EMPRESA">Empresa</asp:ListItem>

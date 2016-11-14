@@ -96,7 +96,7 @@
 
                                                 <div class='pure-control-group'>
                                                     <label for='foo'>Almacen</label>
-                                                    <asp:DropDownList ID="cbalmacen" runat="server">
+                                                    <asp:DropDownList ID="cbalmacen" runat="server" >
                                                         <asp:ListItem Value="FRONT">FRONT</asp:ListItem>
                                                         <asp:ListItem Value="BACK">BACK</asp:ListItem>
                                                 </asp:DropDownList>

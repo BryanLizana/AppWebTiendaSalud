@@ -38,11 +38,11 @@
                             break;
                         case "2":
                             //other
-                            pages_privilegios = new string[]{ "panel_control", "ads" };
+                            pages_privilegios = new string[]{ "panel_control", "productos","clientes","proveedores","creditos","lotes","compras" };
                             break;
                         case "3":
                             //other
-                            pages_privilegios = new string[]{ "panel_control", "ads" };
+                            pages_privilegios = new string[]{ "panel_control", "proformas","solicompra","ventas","clientes" };
                             break;
                         default:
                             pages_privilegios = new string[]{ "index" };

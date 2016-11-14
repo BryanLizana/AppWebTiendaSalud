@@ -31,7 +31,7 @@ namespace CapaDatos
                 cmd.CommandText = "sp_Insert_Creditos";
                 cmd.Parameters.Add("@cre_id", SqlDbType.Int).Value = Creditos.Cre_id;
                 cmd.Parameters.Add("@cre_plazos", SqlDbType.Int).Value = Creditos.Cre_plazos;
-                cmd.Parameters.Add("@cre_interes", SqlDbType.Decimal).Value = Creditos.Cre_interes;
+                cmd.Parameters.Add("@cre_interes", SqlDbType.Decimal).Value = Creditos.Cre_interes.ToString().Replace(".", ",");
                 cmd.Parameters.Add("@cre_subtotal", SqlDbType.Decimal).Value = Creditos.Cre_subtotal;
                 cmd.Parameters.Add("@cre_igv", SqlDbType.Decimal).Value = Creditos.Cre_igv;
                 cmd.Parameters.Add("@cre_total", SqlDbType.Decimal).Value = Creditos.Cre_total;

@@ -74,7 +74,7 @@
                                          <div class='pure-control-group'>
                                                 <asp:PlaceHolder ID="place_list_pro" runat="server" Visible="false">
                                                     <br />
-                                                    <asp:GridView ID="dgv_list_pro" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_pro_RowCommand" >
+                                                    <asp:GridView ID="dgv_list_pro" runat="server" AllowPaging="True"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_pro_RowCommand" OnPageIndexChanging="dgv_list_pro_PageIndexChanging" PageSize="3" >
                                                         <Columns>
                                                                 <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
                                                             </Columns>
@@ -164,6 +164,25 @@
                     <Columns>
                     <asp:buttonfield buttontype="Link"  commandname="editar" headertext="" text="Editar"/>
                     <asp:buttonfield buttontype="Link"   commandname="eliminar" headertext="" text="Eliminar"/>
+                                                            
+                    </Columns>
+                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                </asp:GridView>
+
+            </asp:PlaceHolder>
+            <br />
+              <div class='pure-u-1-2'>
+                  <asp:Button ID="btn_listproforma" runat="server" Text="Listar Proformas" OnClick="btn_list_proforma"  class='button-success pure-button' />
+              </div>
+            <br />
+            <asp:PlaceHolder ID="place_list_proformas" runat="server" Visible="false">
+               
+                <br /> <br />
+                <span>Listado de Proformas</span>
+                
+                <asp:GridView ID="dgv_list_proforma" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_proforma_RowCommand">
+                    <Columns>
+                    <asp:buttonfield buttontype="Link"  commandname="vender" headertext="" text="Realizar Venta"/>
                                                             
                     </Columns>
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />

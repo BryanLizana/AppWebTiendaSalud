@@ -8,6 +8,6 @@
     <title></title>
 </head>
 <body>
-    
+    <h1>Usted No tiene permisos Suficientes para entrar a este módulo</h1>
 </body>
 </html>

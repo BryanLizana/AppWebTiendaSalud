@@ -298,10 +298,12 @@ namespace CapaPresentacion.pages
         protected void dgv_list_pro_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             //pro
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_pro.Rows[index];
+          
             if (e.CommandName == "select")
             {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_pro.Rows[index];
+
                 txtpro_id.Text = dgvrow.Cells[1].Text;
                 txtpro_name.Text = dgvrow.Cells[2].Text;
                 txtlot_id.Text = dgvrow.Cells[9].Text;
@@ -373,6 +375,84 @@ namespace CapaPresentacion.pages
         protected void cbmes_SelectedIndexChanged(object sender, EventArgs e)
         {
             add_data_cre();
+        }
+
+        protected void dgv_list_proforma_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //pro
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow dgvrow = dgv_list_proforma.Rows[index];
+            if (e.CommandName == "vender")
+            {
+                place_edit_venta.Visible = true;
+                place_dgv.Visible = false;
+                //txtven_id.Text = dgvrow.Cells[2].Text;
+
+                //Venta.Ven_id = Convert.ToInt32(dgvrow.Cells[2].Text);
+                //DataTable dt = ClsVen.List_Ventas(Venta);
+                //DataRow dr = dt.Rows[0];
+
+                Proforma.Pref_id = Convert.ToInt32(dgvrow.Cells[1].Text);
+                DataTable dt = clsProf.List_Proformas(Proforma);
+                DataRow dr = dt.Rows[0];
+
+                txtuser.Text = dgvrow.Cells[2].Text;
+                txtuser_id.Text = dr[1].ToString();
+                txtcli.Text = dgvrow.Cells[3].Text;
+                txtcli_id.Text = dr[2].ToString();
+                txtprof_id.Text = dgvrow.Cells[1].Text;
+
+                //txtcode.Text = dgvrow.Cells[6].Text;
+                //txtuser.Text = dgvrow.Cells[5].Text;
+                //txtuser_id.Text = dr[3].ToString();
+                //txtcli.Text = dgvrow.Cells[11].Text;
+                //txtcli_id.Text = dr[6].ToString();
+                //list pro asoiciados
+                cls_Proforma_detalle clsPrefDet = new cls_Proforma_detalle();
+                cls_Proforma_detalles PrefDetalle = new cls_Proforma_detalles();
+
+                PrefDetalle.Pref_id = Convert.ToInt32(dgvrow.Cells[1].Text);
+                dgv_list_profo_detalle.DataSource = clsPrefDet.List_Proforma_detalles(PrefDetalle);
+                dgv_list_profo_detalle.DataBind();
+
+                txtven_subto.Text = dgvrow.Cells[11].Text;
+                txven_igv.Text = dgvrow.Cells[9].Text;
+                txtven_total.Text = dgvrow.Cells[10].Text;
+
+
+                cal_total();
+
+
+
+            }
+        }
+
+        protected void btn_list_proforma(object sender, EventArgs e)
+        {
+            if (place_list_proformas.Visible == false)
+            {
+                place_list_proformas.Visible = true;
+                btn_listproforma.Text = "Cerrar Listado";
+                //list ventas
+                Proforma.Pref_id = 0;
+                dgv_list_proforma.DataSource = clsProf.List_Proformas(Proforma);
+                dgv_list_proforma.DataBind();
+            }
+            else
+            {
+                place_list_proformas.Visible = false;
+                btn_listproforma.Text = "Listar Proformas";
+            }
+        
+
+        }
+
+        protected void dgv_list_pro_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgv_list_pro.PageIndex = e.NewPageIndex;
+            Producto.mode = 1;
+            dgv_list_pro.DataSource = clsPro.List_Productos(Producto);
+            dgv_list_pro.DataBind();
         }
     }
 }

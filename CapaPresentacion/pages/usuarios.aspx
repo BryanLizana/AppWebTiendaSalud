@@ -42,20 +42,20 @@
                 </div>
 
                 <div class='pure-control-group'>
-                    <label for='foo'>Distrito</label>
+                    <label >Distrito</label>
                     <asp:TextBox ID="txtdistrito" runat="server" placeholder='Distrito'  MaxLength="30"></asp:TextBox>
                 </div>
                 <div class='pure-control-group'>
-                    <label for='foo'>Direccion</label>
+                    <label >Direccion</label>
                     <asp:TextBox ID="txtdireccion" runat="server" placeholder='Direcciòn' Rows="5" ></asp:TextBox>
                 </div>
                 <div class='pure-control-group'>
-                    <label for='foo'>Password</label>
-                    <asp:TextBox ID="txtpass" runat="server" placeholder='Direcciòn' Rows="5" ></asp:TextBox>
+                    <label >Password</label>
+                    <asp:TextBox ID="txtpass" runat="server" placeholder='Password' Rows="5" ></asp:TextBox>
                 </div>
           
                   <div class='pure-control-group'>
-                    <label for='foo'>TypeUser</label>
+                    <label >TypeUser</label>
                      <asp:DropDownList ID="cbtype" runat="server">
                          <asp:ListItem Value="1">Admin</asp:ListItem>
                          <asp:ListItem Value="2">UserType2</asp:ListItem>

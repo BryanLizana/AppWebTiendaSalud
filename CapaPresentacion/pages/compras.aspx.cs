@@ -177,7 +177,7 @@ namespace CapaPresentacion.pages
                 txtproducto.Text = dgvrow.Cells[3].Text;
                 txtpro_id.Text = dr[1].ToString();
                 txtLotcant.Text = dgvrow.Cells[6].Text;
-                cbalmacen.SelectedItem.Value = dgvrow.Cells[7].Text;
+                cbalmacen.SelectedValue = dgvrow.Cells[7].Text;
                 txtLotcode.Text = dgvrow.Cells[5].Text;
                 //
                 txtaporte.Text = dgvrow.Cells[8].Text;

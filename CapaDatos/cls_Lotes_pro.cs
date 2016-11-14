@@ -38,7 +38,7 @@ namespace CapaDatos
                 cmd.Parameters.Add("@lote_cant", SqlDbType.Int).Value = Lotes_pro.Lote_cant;
                 cmd.Parameters.Add("@lote_almacen", SqlDbType.VarChar, 30).Value = Lotes_pro.Lote_almacen;
                 cmd.Parameters.Add("@solicomp_id", SqlDbType.Int).Value = Lotes_pro.Solicomp_id;
-                cmd.Parameters.Add("@lote_aporte", SqlDbType.Decimal).Value = Lotes_pro.Lote_aporte;
+                cmd.Parameters.Add("@lote_aporte", SqlDbType.Decimal).Value = Lotes_pro.Lote_aporte.ToString().Replace(".",",");
                 cmd.Parameters.Add("@lote_estado", SqlDbType.VarChar, 30).Value = Lotes_pro.Lote_estado;
                 cmd.Parameters.Add("@lote_stock", SqlDbType.Int).Value = Lotes_pro.Lote_stock;
                 cmd.Connection.Open();

@@ -67,6 +67,7 @@ namespace CapaPresentacion.pages
                 Lotes_pro.Lote_almacen = cbalmacen.SelectedValue;
                 Lotes_pro.Lote_vence = dtvence.SelectedDate;
                 Lotes_pro.Lote_estado = "0";
+                Lotes_pro.Lote_stock = Convert.ToInt32(txtcant.Text);
                 Lotes_pro.Solicomp_id = Convert.ToInt32(Session["Solicomp_id"].ToString());
                 Lotes_pro.Pro_id = Convert.ToInt32(Session["Producto_id"].ToString());
 

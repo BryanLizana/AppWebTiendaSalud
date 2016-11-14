@@ -34,11 +34,13 @@ namespace CapaPresentacion.pages
             {
                 lbdni.Text = "RUC";
                 lbname.Text = "Razon Social";
+                txtdni.MaxLength = 20;
             }
             else
             {
                 lbdni.Text = "DNI";
                 lbname.Text = "Nombres";
+                txtdni.MaxLength = 9;
             }
         }
 
