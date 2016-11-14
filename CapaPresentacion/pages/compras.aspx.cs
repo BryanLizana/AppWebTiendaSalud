@@ -26,6 +26,9 @@ namespace CapaPresentacion.pages
         cls_Credito clsCredito = new cls_Credito();
         cls_Creditos Credito = new cls_Creditos();
 
+        cls_Doc_numbers Doc = new cls_Doc_numbers();
+        cls_Doc_number clsDoc = new cls_Doc_number();
+
         public void load()
         {
             Solicitud.Solicomp_id = 0;
@@ -107,6 +110,11 @@ namespace CapaPresentacion.pages
 
                 txtuser_id.Text = Session["User_id"].ToString();
                 txtuser.Text = Session["User_code"].ToString();
+
+                //add code
+                Doc.doc_type = "COMPRA";
+                txtcode.Text = clsDoc.List_Doc(Doc).doc_type;
+
 
                 place_compra.Visible = true;
                 place_list_solicomp.Visible = false;
@@ -212,6 +220,8 @@ namespace CapaPresentacion.pages
                 Lotes_pro.Solicomp_id = Convert.ToInt32(txtsolicompid.Text);
                 clsLotPro.Insert_Lotes_pro(Lotes_pro);
 
+               
+
                 Lotes_pro.Lote_id = 0;
                 Lotes_pro.Solicomp_id = Convert.ToInt32(txtsolicompid.Text);
                 //Lotes_pro.mode = 1; 
@@ -281,7 +291,7 @@ namespace CapaPresentacion.pages
 
             if (txtcre_mensual.Text != "")
             {
-                if (txtsolicompid.Text != "")
+                if (txtsolicompid.Text != "" && txtprovee_id.Text != "" && txtuser_id.Text != "")
                 {
                     //create credito basic
                     Credito.Cre_id = (txtcre_id.Text != "") ? Convert.ToInt32(txtcre_id.Text) :0 ;
@@ -314,7 +324,14 @@ namespace CapaPresentacion.pages
                     place_credito.Visible = false;
                     place_list_solicomp.Visible = true;
                     btnsave.Visible = true;
+                    //insert code
+                    Doc.doc_number = Convert.ToInt32((txtcode.Text).ToString().Replace("COMPRA", ""));
+                    Doc.doc_type = "COMPRA";
+                    clsDoc.Insert_Doc(Doc);
                     clean_compra();
+
+                  
+
                     Response.Redirect("compras.aspx");
 
                 }

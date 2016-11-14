@@ -44,6 +44,7 @@
     <Compile Include="cls_Cliente.cs" />
     <Compile Include="cls_Compra.cs" />
     <Compile Include="cls_Credito.cs" />
+    <Compile Include="cls_Doc_number.cs" />
     <Compile Include="cls_Lote_pro.cs" />
     <Compile Include="cls_Producto.cs" />
     <Compile Include="cls_Proforma.cs" />

@@ -28,6 +28,8 @@ namespace CapaPresentacion.pages
 
         cls_Credito clsCredito = new cls_Credito();
         cls_Creditos Credito = new cls_Creditos();
+
+    
         public void load()
         {
 
@@ -361,6 +363,7 @@ namespace CapaPresentacion.pages
             txtuser.Text = Session["User_code"].ToString();
             txtuser_id.Text = Session["User_id"].ToString();
 
+            
 
             cls_Proforma_detalle clsPrefDet = new cls_Proforma_detalle();
             cls_Proforma_detalles PrefDetalle = new cls_Proforma_detalles();

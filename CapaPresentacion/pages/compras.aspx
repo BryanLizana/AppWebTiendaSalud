@@ -27,7 +27,7 @@
                         <asp:TextBox ID="txtcode" runat="server"   MaxLength="30"></asp:TextBox>
                   </div>
                   <div class='pure-control-group'>  
-                        <label for='email'>User - Compra</label>
+                        <label >User - Compra</label>
                        <asp:TextBox ID="txtuser_id" runat="server"  Visible="false"></asp:TextBox>
                         <asp:TextBox ID="txtuser" runat="server"  Enabled ="false"></asp:TextBox>
                   </div>
@@ -37,7 +37,7 @@
                   </div>
             <%--Aññadir proveedor--%>
                <div class='pure-control-group'>
-                       <label for='password'>Proveedor</label>
+                       <label >Proveedor</label>
                         <asp:TextBox ID="txtprovee_id" runat="server"  MaxLength="50" Visible="false"></asp:TextBox>
 
                         <asp:TextBox ID="txtprovee" runat="server"  MaxLength="50" Enabled="false"></asp:TextBox>

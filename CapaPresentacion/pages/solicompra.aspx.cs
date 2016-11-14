@@ -22,8 +22,9 @@ namespace CapaPresentacion.pages
 
         cls_Cliente clsClie = new cls_Cliente();
         cls_Clientes Cliente = new cls_Clientes();
-            
 
+        cls_Doc_numbers Doc = new cls_Doc_numbers();
+        cls_Doc_number clsDoc = new cls_Doc_number();
         public void clean_lot()
         {
             txtLotcant.Text = "";
@@ -64,7 +65,13 @@ namespace CapaPresentacion.pages
             //Lotes_pro.mode = 1; 
             dgv_list_lotes_to_solicomp.DataSource = clsLotPro.List_Lotes_pro(Lotes_pro);
             dgv_list_lotes_to_solicomp.DataBind();
+
+           
+
             clean_solip();
+            //add code
+            Doc.doc_type = "SOLICOMP";
+            txtcode.Text = clsDoc.List_Doc(Doc).doc_type;
             txtuser.Text = Session["User_name"].ToString();
             txtuser_id.Text = Session["User_id"].ToString();
 
@@ -84,11 +91,15 @@ namespace CapaPresentacion.pages
 
                 int id_soli = clsSolicomp.Insert_Solicitud_comp(Solicitud);
                 txtsoli_id.Text = Convert.ToString(id_soli);
-            
+
                 btnaddlot.Visible = false;
                 place_list_solicomp.Visible = false;
                 place_addlote.Visible = true;
                 clean_lot();
+
+                //add code
+                Doc.doc_type = "LOTE";
+                txtLotcode.Text = clsDoc.List_Doc(Doc).doc_type;
 
             }
         }   
@@ -144,11 +155,17 @@ namespace CapaPresentacion.pages
                     Solicitud.Solicomp_date = DateTime.Now;
                     Solicitud.Solicomp_estado = "COMPLETADO";
                     Solicitud.Solicomp_valido= Convert.ToDateTime(dtvence.SelectedDate);
+                //insert code
+                Doc.doc_number = Convert.ToInt32((txtcode.Text).ToString().Replace("SOLICOMP", ""));
+                Doc.doc_type = "SOLICOMP";
+                clsDoc.Insert_Doc(Doc);
 
-                    int id_soli = clsSolicomp.Insert_Solicitud_comp(Solicitud);
+                int id_soli = clsSolicomp.Insert_Solicitud_comp(Solicitud);
                     if (id_soli > 0){
                         clean_solip();                
                     }
+
+                    
 
                     Response.Redirect("solicompra.aspx");
             }
@@ -169,7 +186,12 @@ namespace CapaPresentacion.pages
             Lotes_pro.Solicomp_id = Convert.ToInt32(txtsoli_id.Text);
             clsLotPro.Insert_Lotes_pro(Lotes_pro);
 
-            Lotes_pro.Lote_id = 0;
+                //insert code
+                Doc.doc_number = Convert.ToInt32((txtLotcode.Text).ToString().Replace("LOTE", ""));
+                Doc.doc_type = "LOTE";
+                clsDoc.Insert_Doc(Doc);
+
+                Lotes_pro.Lote_id = 0;
             Lotes_pro.Solicomp_id = Convert.ToInt32(txtsoli_id.Text);
             //Lotes_pro.mode = 1; 
             dgv_list_lotes_to_solicomp.DataSource = clsLotPro.List_Lotes_pro(Lotes_pro);

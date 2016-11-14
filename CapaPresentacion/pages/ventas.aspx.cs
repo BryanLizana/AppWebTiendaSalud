@@ -28,6 +28,9 @@ namespace CapaPresentacion.pages
 
         cls_Credito clsCredito = new cls_Credito();
         cls_Creditos Credito = new cls_Creditos();
+
+        cls_Doc_numbers Doc = new cls_Doc_numbers();
+        cls_Doc_number clsDoc = new cls_Doc_number();
         public void load(){
         
                 //list ventas
@@ -94,15 +97,20 @@ namespace CapaPresentacion.pages
         {
             double total = 0;
 
-            for (int i = 0; i < dgv_list_profo_detalle.Rows.Count; i++)
-            {
-                GridViewRow dgv_list_lotes_row = dgv_list_profo_detalle.Rows[i];
-                total += Convert.ToDouble(dgv_list_lotes_row.Cells[5].Text);
-            }
+            //if (dgv_list_profo_detalle.Rows.Count > 0)
+                if (true)
 
-            txtven_subto.Text = total.ToString("0#.##");
-            txven_igv.Text = (total * 0.18).ToString("0#.##");
-            txtven_total.Text = (total * 1.18).ToString("0#.##");
+            {
+                    for (int i = 0; i < dgv_list_profo_detalle.Rows.Count; i++)
+                {
+                    GridViewRow dgv_list_lotes_row = dgv_list_profo_detalle.Rows[i];
+                    total += Convert.ToDouble(dgv_list_lotes_row.Cells[4].Text);
+                }
+
+                txtven_subto.Text = total.ToString("0#.##");
+                txven_igv.Text = (total * 0.18).ToString("0#.##");
+                txtven_total.Text = (total * 1.18).ToString("0#.##");
+            }
 
         }
         protected void dgv_list_client_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -218,12 +226,17 @@ namespace CapaPresentacion.pages
                     Venta.Ven_doc_number = txtcode.Text;
                     ClsVen.Insert_Ventas(Venta);
                     //msg
+                    //insert code
+                    Doc.doc_number = Convert.ToInt32((txtcode.Text).ToString().Replace("VENTA", ""));
+                    Doc.doc_type = "VENTA";
+                    clsDoc.Insert_Doc(Doc);
 
                     clean_form();
                     place_edit_venta.Visible = false;
                     btn_add_venta.Visible = true;
                     place_dgv.Visible = true;
 
+                
 
                     Response.Redirect("ventas.aspx");
                 }
@@ -349,6 +362,7 @@ namespace CapaPresentacion.pages
             txtuser.Text = Session["User_code"].ToString();
             txtuser_id.Text = Session["User_id"].ToString();
 
+           
 
             cls_Proforma_detalle clsPrefDet = new cls_Proforma_detalle();
             cls_Proforma_detalles PrefDetalle = new cls_Proforma_detalles();
@@ -359,6 +373,10 @@ namespace CapaPresentacion.pages
 
 
             cal_total();
+
+            //add code
+            Doc.doc_type = "VENTA";
+            txtcode.Text = clsDoc.List_Doc(Doc).doc_type;
 
         }
 
@@ -428,9 +446,12 @@ namespace CapaPresentacion.pages
                 txven_igv.Text = dgvrow.Cells[9].Text;
                 txtven_total.Text = dgvrow.Cells[10].Text;
 
+              
 
                 cal_total();
-
+                //add code
+                Doc.doc_type = "VENTA";
+                txtcode.Text = clsDoc.List_Doc(Doc).doc_type;
 
 
             }
