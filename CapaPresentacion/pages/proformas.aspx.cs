@@ -107,11 +107,12 @@ namespace CapaPresentacion.pages
         }
         protected void dgv_list_client_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //cli
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_client.Rows[index];
+         
             if (e.CommandName == "select")
             {
+                //cli
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_client.Rows[index];
                 txtcli.Text = dgvrow.Cells[2].Text;
                 txtcli_id.Text = dgvrow.Cells[1].Text;
                 place_list_cliente.Visible = false;
@@ -263,11 +264,13 @@ namespace CapaPresentacion.pages
 
         protected void dgv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //Proformas
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv.Rows[index];
+           
             if (e.CommandName == "editar")
             {
+                //Proformas
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv.Rows[index];
+
                 place_edit_proforma.Visible = true;
                 place_dgv.Visible = false;
                 txtprof_id.Text = dgvrow.Cells[2].Text;
@@ -306,7 +309,10 @@ namespace CapaPresentacion.pages
 
             }
             else if (e.CommandName == "eliminar")
-            {
+            { //Proformas
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv.Rows[index];
+
                 Proforma.Pref_id = Convert.ToInt32(dgvrow.Cells[2].Text);
                 //msg
 
@@ -322,11 +328,12 @@ namespace CapaPresentacion.pages
 
         protected void dgv_list_pro_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //pro
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_pro.Rows[index];
+          
             if (e.CommandName == "select")
             {
+                //pro
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_pro.Rows[index];
                 txtpro_id.Text = dgvrow.Cells[1].Text;
                 txtpro_name.Text = dgvrow.Cells[2].Text;
                 txtlot_id.Text = dgvrow.Cells[9].Text;
@@ -340,17 +347,7 @@ namespace CapaPresentacion.pages
 
         protected void dgv_list_profo_detalle_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //pro
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_pro.Rows[index];
-            if (e.CommandName == "editar")
-            {
-
-            }
-            else if (e.CommandName == "eliminar")
-            {
-
-            }
+          
 
 
         }
@@ -398,6 +395,17 @@ namespace CapaPresentacion.pages
         protected void cbmes_SelectedIndexChanged(object sender, EventArgs e)
         {
             add_data_cre();
+        }
+
+        
+
+        protected void dgv_list_client_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgv_list_client.PageIndex = e.NewPageIndex;
+            Cliente.Cli_id = 0;
+            Cliente.Cli_type = "PERSONA";
+            dgv_list_client.DataSource = ClsCli.List_Clientes(Cliente);
+            dgv_list_client.DataBind();
         }
     }
 }

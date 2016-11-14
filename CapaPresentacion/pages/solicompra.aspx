@@ -75,7 +75,7 @@
                                                     <asp:PlaceHolder ID="place_listpro" runat="server" Visible="false">
                                                         <span>Selecciona Un Producto</span>
                                                         <br />
-                                                        <asp:GridView ID="dgv_list_pro" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_pro_RowCommand" >
+                                                        <asp:GridView ID="dgv_list_pro" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_pro_RowCommand"  OnPageIndexChanging="dgv_list_pro_PageIndexChanging" PageSize="5" AllowPaging="true" >
                                                             <Columns>
                                                                   <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>                                                                 
                                                             </Columns>

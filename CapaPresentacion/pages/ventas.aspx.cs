@@ -107,12 +107,13 @@ namespace CapaPresentacion.pages
         }
         protected void dgv_list_client_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           //cli
-           int index = Convert.ToInt32(e.CommandArgument);
-           GridViewRow dgvrow = dgv_list_client.Rows[index];
+           
            if (e.CommandName == "select")
            {
-               txtcli.Text = dgvrow.Cells[2].Text;
+                //cli
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_client.Rows[index];
+                txtcli.Text = dgvrow.Cells[2].Text;
                txtcli_id.Text = dgvrow.Cells[1].Text;
                place_list_cliente.Visible = false;
                 btn_addcli.Visible = true;
@@ -256,11 +257,13 @@ namespace CapaPresentacion.pages
 
         protected void dgv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //soli
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv.Rows[index];
+           
             if (e.CommandName == "editar")
             {
+                //soli
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv.Rows[index];
+
                 place_edit_venta.Visible = true;
                 place_dgv.Visible = false;
                 txtven_id.Text = dgvrow.Cells[2].Text;
@@ -294,6 +297,9 @@ namespace CapaPresentacion.pages
             }
             else if (e.CommandName == "eliminar")
             {
+                //soli
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv.Rows[index];
                 Venta.Ven_id = Convert.ToInt32(dgvrow.Cells[2].Text);
                 //msg
 
@@ -381,11 +387,12 @@ namespace CapaPresentacion.pages
 
         protected void dgv_list_proforma_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //pro
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_proforma.Rows[index];
+            
             if (e.CommandName == "vender")
             {
+                //pro
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_proforma.Rows[index];
                 place_edit_venta.Visible = true;
                 place_dgv.Visible = false;
                 //txtven_id.Text = dgvrow.Cells[2].Text;
@@ -455,6 +462,16 @@ namespace CapaPresentacion.pages
             Producto.mode = 1;
             dgv_list_pro.DataSource = clsPro.List_Productos(Producto);
             dgv_list_pro.DataBind();
+        }
+
+        protected void dgv_list_client_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgv_list_client.PageIndex = e.NewPageIndex;
+            Cliente.Cli_id = 0;
+            Cliente.Cli_type = "PERSONA";
+            dgv_list_client.DataSource = ClsCli.List_Clientes(Cliente);
+            dgv_list_client.DataBind();
+
         }
     }
 }

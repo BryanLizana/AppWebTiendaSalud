@@ -187,11 +187,12 @@ namespace CapaPresentacion.pages
 
         protected void dgv_list_pro_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //pro
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_pro.Rows[index];
+           
             if (e.CommandName == "select")
             {
+                //pro
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_pro.Rows[index];
                 txtproducto.Text = dgvrow.Cells[2].Text;
                 txtpro_id.Text = dgvrow.Cells[1].Text;
                 place_listpro.Visible = false;
@@ -204,11 +205,13 @@ namespace CapaPresentacion.pages
 
         protected void dgv_list_lotes_to_solicomp_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //lot
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_lotes_to_solicomp.Rows[index];
+            
             if (e.CommandName == "editar")
             {
+                //lot
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_lotes_to_solicomp.Rows[index];
+
                 btnaddlot.Visible = false;
                 place_list_solicomp.Visible = false;
                 place_addlote.Visible = true;
@@ -227,6 +230,10 @@ namespace CapaPresentacion.pages
             }
             else if (e.CommandName == "eliminar")
             {
+                //lot
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv_list_lotes_to_solicomp.Rows[index];
+
                 Lotes_pro.Lote_id = Convert.ToInt32(dgvrow.Cells[2].Text);
                   //functions fn = new functions();
                 // Session["msg"] = fn.msg(clsLotPro.Delete_Lotes_pro(Lotes_pro), "info");
@@ -243,11 +250,12 @@ namespace CapaPresentacion.pages
 
         protected void dgv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //soli
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv.Rows[index];
+           
             if (e.CommandName == "editar")
             {
+                //soli
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv.Rows[index];
 
                 place_Solicomp.Visible = true;
                 place_list_solicomp.Visible = false;
@@ -267,6 +275,10 @@ namespace CapaPresentacion.pages
             }
             else if (e.CommandName == "eliminar")
             {
+                //soli
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow dgvrow = dgv.Rows[index];
+
                 Solicitud.Solicomp_id = Convert.ToInt32(dgvrow.Cells[2].Text);
                 //msg
 
@@ -281,8 +293,13 @@ namespace CapaPresentacion.pages
                
             
         }
-            
-   
-        
+
+        protected void dgv_list_pro_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgv_list_pro.PageIndex = e.NewPageIndex;
+            Producto.Pro_id = 0;
+            dgv_list_pro.DataSource = clsPro.List_Productos(Producto);
+            dgv_list_pro.DataBind();
+        }
     }
 }

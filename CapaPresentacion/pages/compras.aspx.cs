@@ -352,5 +352,13 @@ namespace CapaPresentacion.pages
             add_data_cre();
 
         }
+
+        protected void dgv_list_provee_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgv_list_provee.PageIndex = e.NewPageIndex;
+            Proveedor.Provee_id = 0;
+            dgv_list_provee.DataSource = clsProvee.List_Proveedores(Proveedor);
+            dgv_list_provee.DataBind();
+        }
     }
 }

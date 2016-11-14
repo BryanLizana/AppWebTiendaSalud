@@ -47,7 +47,7 @@
                 </div>
                  <asp:PlaceHolder ID="place_list_provee" runat="server" Visible="false">
                                     <br />
-                                    <asp:GridView ID="dgv_list_provee" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_provee_RowCommand" >
+                                    <asp:GridView ID="dgv_list_provee" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_provee_RowCommand"  OnPageIndexChanging="dgv_list_provee_PageIndexChanging" PageSize="5" AllowPaging="true">
                                         <Columns>
                                                 <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
                                             </Columns>
