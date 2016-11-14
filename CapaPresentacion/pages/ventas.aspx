@@ -95,9 +95,7 @@
                      <div class='pure-control-group'>
                           <span>Productos de la compra</span>
                         <asp:GridView ID="dgv_list_profo_detalle" runat="server"  class='pure-table pure-table-bordered pure-table-odd' ShowHeaderWhenEmpty="True" OnRowCommand="dgv_list_profo_detalle_RowCommand" >
-                            <Columns>
-                                    <asp:buttonfield buttontype="Link"  commandname="select" headertext="" text="Select"/>
-                                </Columns>
+                           
                         </asp:GridView>  
                       </div>
                      <div class='pure-control-group'>

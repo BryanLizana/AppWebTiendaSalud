@@ -36,6 +36,20 @@ namespace CapaPresentacion.pages
                 dgv.DataBind();
         }
 
+
+        public void clean_form()
+        {
+            txtcli.Text = "";
+            txtcre_id.Text = "";
+            txtlot_id.Text = "";
+            txtprof_id.Text = "";
+            txtpro_id.Text = "";
+            txtpro_name.Text = "";
+            txtpro_importe.Text = "";
+            txtven_id.Text = "";
+
+        }
+
         public int save_cre(string estado)
         {
             //create credito basic
@@ -122,7 +136,7 @@ namespace CapaPresentacion.pages
         protected void btn_cancelarcli(object sender, EventArgs e)
         {
             //clean cliente 
-            place_list_cliente.Visible = true;
+            place_list_cliente.Visible = false;
 
         }
         protected void btn_cancelar_pro(object sender, EventArgs e)
@@ -177,7 +191,7 @@ namespace CapaPresentacion.pages
         protected void btn_cancelar(object sender, EventArgs e)
         {
             //cancel venta
-            //cleanventa
+            clean_form();
             place_edit_venta.Visible = false;
             btn_add_venta.Visible = true;
             place_dgv.Visible = true;
@@ -204,7 +218,7 @@ namespace CapaPresentacion.pages
                     ClsVen.Insert_Ventas(Venta);
                     //msg
 
-                    //cleanventa
+                    clean_form();
                     place_edit_venta.Visible = false;
                     btn_add_venta.Visible = true;
                     place_dgv.Visible = true;
@@ -285,14 +299,14 @@ namespace CapaPresentacion.pages
 
                 functions fn = new functions();
                 Session["msg"] = fn.msg(ClsVen.Delete_Ventas(Venta), "info");
-                //Response.Redirect("solicompra.aspx");
+               
 
                 ClsVen.Delete_Ventas(Venta);
-                load();
-                        
+                Response.Redirect("solicompra.aspx");
+
             }
-               
-            
+
+
         }
 
         protected void dgv_list_pro_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -317,19 +331,7 @@ namespace CapaPresentacion.pages
 
         protected void dgv_list_profo_detalle_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //pro
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow dgvrow = dgv_list_pro.Rows[index];
-            if (e.CommandName == "editar")
-            {
-
-            }
-            else if (e.CommandName == "eliminar")
-            {
-
-            }
-
-
+            
         }
 
         protected void btn_add_ven(object sender, EventArgs e)

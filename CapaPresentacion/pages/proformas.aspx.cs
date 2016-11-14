@@ -136,7 +136,7 @@ namespace CapaPresentacion.pages
         protected void btn_cancelarcli(object sender, EventArgs e)
         {
             
-            place_list_cliente.Visible = true;
+            place_list_cliente.Visible = false;
 
         }
         protected void btn_cancelar_pro(object sender, EventArgs e)
