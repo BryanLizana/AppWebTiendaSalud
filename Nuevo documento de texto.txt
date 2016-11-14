@@ -1,0 +1,10 @@
+* lote  stock edit --~
+*amdin delete xxxx
+*msg error
+*CODE aouto
+*List page -listo pro-solicompra
+--proveedores compras
+*msg delete producto
+*header credito
+*decimal(8,2 )++
+*msg de bavk and front
