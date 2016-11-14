@@ -61,6 +61,9 @@ namespace CapaPresentacion.pages
                     Session["Producto_id"] = "0";
                     PlaceHolder1.Visible = false;
                     Response.Redirect("/pages/productos.aspx");
+            }else
+            {
+                //empty
             }
         }
 
@@ -149,14 +152,14 @@ namespace CapaPresentacion.pages
             {
                 Producto.Pro_id = Convert.ToInt32(dgvrow.Cells[2].Text);
 
-                //    functions fn = new functions();
-                // Session["msg"] = fn.msg(clsPro.Delete_Productos(Producto), "info");
-                // Session["Cli_id"] = "0";
-                // Response.Redirect("productos.aspx");
+                functions fn = new functions();
+                Session["msg"] = fn.msg(clsPro.Delete_Productos(Producto), "info");
+                Session["Cli_id"] = "0";
+                Response.Redirect("productos.aspx");
 
 
-                clsPro.Delete_Productos(Producto);
-                load();
+                // clsPro.Delete_Productos(Producto);
+                // load();
                         
             }
                

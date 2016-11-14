@@ -64,6 +64,9 @@ namespace CapaPresentacion.pages
                     Session["Other_user_id"] = "0";
                     PlaceHolder1.Visible = false;
                     Response.Redirect("/pages/usuarios.aspx");
+            }else
+            {
+                //empty
             }
         }
 

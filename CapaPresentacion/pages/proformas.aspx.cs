@@ -157,7 +157,7 @@ namespace CapaPresentacion.pages
 
         protected void btn_save_pro(object sender, EventArgs e)
         {
-            if (txtpro_cant.Text != "" && txtpro_name.Text != "")
+            if (txtpro_cant.Text != "" && txtpro_name.Text != "" && txtcli_id != "" && txtuser_id !="" && txtlot_id.Text != "" && txtpro_id.Text != "")
             {
                 //save profo
                 int id_prof = save_profo("PROCESO");
@@ -191,7 +191,7 @@ namespace CapaPresentacion.pages
             }
             else
             {
-                //msg empty
+                //empty
 
             }
         }
@@ -320,7 +320,7 @@ namespace CapaPresentacion.pages
 
                 functions fn = new functions();
                 Session["msg"] = fn.msg(clsProf.Delete_Proformas(Proforma), "info");
-                Response.Redirect("solicompra.aspx");
+                Response.Redirect("proformas.aspx");
 
 
             }

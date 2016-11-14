@@ -70,7 +70,7 @@ namespace CapaPresentacion.pages
             return  clsCredito.Insert_Creditos(Credito);
         }
         public int save_profo(string estado)
-        {
+        {            
             int id_cre = 0;
             Proforma.Pref_id = txtprof_id.Text != "" ? Convert.ToInt32(txtprof_id.Text): 0;
             Proforma.Pref_doc_number = "VENTA";
@@ -160,7 +160,7 @@ namespace CapaPresentacion.pages
 
         protected void btn_save_pro(object sender, EventArgs e)
         {
-            if (txtpro_cant.Text != "" && txtpro_name.Text != ""  )
+            if (txtpro_cant.Text != "" && txtpro_name.Text != "" && txtcli_id.Text != "" && txtuser_id.Text != "" && txtlot_id.Text != "" && txtpro_importe.Text != "" )
             {
                 //save profo
                 int id_prof = save_profo("PROCESO");
@@ -192,7 +192,7 @@ namespace CapaPresentacion.pages
             }
             else
             {
-                //msg empty
+                //empty
                
             }
         }
@@ -213,7 +213,7 @@ namespace CapaPresentacion.pages
             if (txtcre_mensual.Text != "")
             {
 
-                if (txtcre_mensual.Text != "")
+                if (txtcre_mensual.Text != "" && txtcli_id.Text != "" && txtuser_id.Text != "" && txtcode.Text != "")
                 {
                     save_profo("COMPLETADO");
 
@@ -321,7 +321,7 @@ namespace CapaPresentacion.pages
                
 
                 ClsVen.Delete_Ventas(Venta);
-                Response.Redirect("solicompra.aspx");
+                Response.Redirect("ventas.aspx");
 
             }
 

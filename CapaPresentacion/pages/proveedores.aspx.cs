@@ -56,6 +56,9 @@ namespace CapaPresentacion.pages
                 Session["Proveedor_id"] = "0";
                 PlaceHolder1.Visible = false;
                 Response.Redirect("proveedores.aspx");
+           }else
+           {
+               //empty
            }
 
         }

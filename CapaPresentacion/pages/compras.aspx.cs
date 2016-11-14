@@ -230,6 +230,9 @@ namespace CapaPresentacion.pages
                 clean_lot();
                 place_edit_lot.Visible = false;
                 cal_total();
+            }else
+            {
+                //empty
             }
 
             
@@ -291,7 +294,7 @@ namespace CapaPresentacion.pages
 
             if (txtcre_mensual.Text != "")
             {
-                if (txtsolicompid.Text != "" && txtprovee_id.Text != "" && txtuser_id.Text != "")
+                if (txtsolicompid.Text != "" && txtprovee_id.Text != "" && txtuser_id.Text != "" && txtigv.Text != "" && txtsubto.Text != "" && txttotal.Text != "" && txtcre_interes.Text != "" && txtcode.Text != "")
                 {
                     //create credito basic
                     Credito.Cre_id = (txtcre_id.Text != "") ? Convert.ToInt32(txtcre_id.Text) :0 ;
@@ -334,6 +337,9 @@ namespace CapaPresentacion.pages
 
                     Response.Redirect("compras.aspx");
 
+                }else
+                {
+                    //empty
                 }
             }
             else
