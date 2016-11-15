@@ -36,20 +36,21 @@ namespace CapaPresentacion
                     Session["User_name"] = dr[3].ToString();
                     Session["User_type"] = dr[4].ToString();
                     //viewthis
+                    Session["msg"] = "0";
                     Response.Redirect("pages/panel_control.aspx");
 
                 }
                 else
                 {
                     functions fn = new functions();
-                    Session["msg"] = fn.msg("error", "Acceso incorreto");
+                    Session["msg"] = fn.msg( "Acceso incorreto", "error");
                 }
             }
             catch (Exception)
             {
 
                 functions fn = new functions();
-                Session["msg"] = fn.msg("error", "Acceso No válido");
+                Session["msg"] = fn.msg("Acceso no vàlido", "error");
             }
            
 

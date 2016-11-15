@@ -42,10 +42,10 @@ namespace CapaDatos
                 cmd.Connection.Close();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
-                throw ex;
+                return false;
             }
 
         }

@@ -7,7 +7,7 @@ namespace CapaPresentacion
 {
     public class functions
     {
-        public string msg(string type , string mensaje)
+        public string msg(string mensaje, string type)
         {
             string msg;
 

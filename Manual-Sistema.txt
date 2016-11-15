@@ -1,0 +1,6 @@
+Ejecute el file sql.sql  para generar las tablas y sp
+Ejecutar RecursosPostDatabase para generar susuario adminy productos.
+login:
+User = 123456789
+Password = admin
+

@@ -81,11 +81,11 @@
 
                                                 <div class='pure-control-group'>
                                                     <label for='email'>Cantidad</label>
-                                                    <asp:TextBox ID="txtLotcant" runat="server" Enabled="false" ></asp:TextBox>
+                                                    <asp:TextBox ID="txtLotcant" runat="server" Enabled="false" Max="99999"  type="number"  ></asp:TextBox>
                                                 </div>
                                                    <div class='pure-control-group'>
                                                     <label for='foo'>Aporte</label>
-                                                    <asp:TextBox ID="txtaporte" runat="server" ></asp:TextBox>
+                                                    <asp:TextBox ID="txtaporte" runat="server" MaxLength="10" ></asp:TextBox>
                                                 </div>
                                                 <div class='pure-control-group'>
                                                      <label >Fecha de Vencimiento del Lote</label>
@@ -126,15 +126,15 @@
 
                   <div class='pure-control-group'>
                         <label >Sub Total</label>
-                        <asp:TextBox ID="txtsubto" runat="server"   Enabled="true"></asp:TextBox>
+                        <asp:TextBox ID="txtsubto" runat="server" MaxLength="10"  Enabled="true"></asp:TextBox>
                     </div>
                     <div class='pure-control-group'>
                         <label >IGV</label>
-                        <asp:TextBox ID="txtigv" runat="server"  Enabled="true"></asp:TextBox>
+                        <asp:TextBox ID="txtigv" runat="server" MaxLength="10" Enabled="true"></asp:TextBox>
                     </div>
                     <div class='pure-control-group'>
                         <label >Total</label>
-                        <asp:TextBox ID="txttotal" runat="server"   Enabled="true"></asp:TextBox>
+                        <asp:TextBox ID="txttotal" runat="server" MaxLength="10" Enabled="true"></asp:TextBox>
                     </div>
 
                  <div class='pure-controls'>

@@ -38,7 +38,7 @@ namespace CapaDatos
             catch (Exception ex)
             {
 
-                throw ex;
+                return false;
             }
 
         }

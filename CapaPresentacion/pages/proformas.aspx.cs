@@ -99,7 +99,7 @@ namespace CapaPresentacion.pages
             for (int i = 0; i < dgv_list_profo_detalle.Rows.Count; i++)
             {
                 GridViewRow dgv_list_lotes_row = dgv_list_profo_detalle.Rows[i];
-                total += Convert.ToDouble(dgv_list_lotes_row.Cells[5].Text);
+                total += Convert.ToDouble(dgv_list_lotes_row.Cells[4].Text);
             }
 
             txtven_subto.Text = total.ToString("0#.##");
@@ -157,7 +157,7 @@ namespace CapaPresentacion.pages
 
         protected void btn_save_pro(object sender, EventArgs e)
         {
-            if (txtpro_cant.Text != "" && txtpro_name.Text != "" && txtcli_id != "" && txtuser_id !="" && txtlot_id.Text != "" && txtpro_id.Text != "")
+            if (txtpro_cant.Text != "" && txtpro_name.Text != "" && txtcli_id.Text != "" && txtuser_id.Text !="" && txtlot_id.Text != "" && txtpro_id.Text != "")
             {
                 //save profo
                 int id_prof = save_profo("PROCESO");

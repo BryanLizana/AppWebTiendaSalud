@@ -27,12 +27,12 @@
                    
                 <div class='pure-control-group'>
                     <label for='name'>DNI</label> 
-                    <asp:TextBox ID="txtdni" runat="server"  MaxLength="9"></asp:TextBox>
+                    <asp:TextBox ID="txtdni" runat="server"  Max="999999999"  type="number"  ></asp:TextBox>
                 </div>
 
                 <div class='pure-control-group'>
                     <label for='password'>Nombres</label>
-                    <asp:TextBox ID="txtfname" runat="server" placeholder='Nombres' MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="txtfname" runat="server" placeholder='Nombres'  MaxLength="30"></asp:TextBox>
 
                 </div>
 
@@ -47,11 +47,11 @@
                 </div>
                 <div class='pure-control-group'>
                     <label >Direccion</label>
-                    <asp:TextBox ID="txtdireccion" runat="server" placeholder='Direcciòn' Rows="5" ></asp:TextBox>
+                    <asp:TextBox ID="txtdireccion" runat="server" placeholder='Direcciòn'  Rows="5" ></asp:TextBox>
                 </div>
                 <div class='pure-control-group'>
                     <label >Password</label>
-                    <asp:TextBox ID="txtpass" runat="server" placeholder='Password' Rows="5" ></asp:TextBox>
+                    <asp:TextBox ID="txtpass" runat="server" placeholder='Password'  Rows="5" ></asp:TextBox>
                 </div>
           
                   <div class='pure-control-group'>

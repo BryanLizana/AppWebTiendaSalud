@@ -94,7 +94,7 @@
 
                                                 <div class='pure-control-group'>
                                                     <label for='email'>Cantidad</label>
-                                                    <asp:TextBox ID="txtLotcant" runat="server"   MaxLength="30"></asp:TextBox>
+                                                    <asp:TextBox ID="txtLotcant" runat="server"  Max="999999"  type="number"  ></asp:TextBox>
                                                 </div>
 
                                                 <div class='pure-control-group'>

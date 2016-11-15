@@ -65,11 +65,11 @@
                                         </div>
                                           <div class='pure-control-group'>
                                             <label >Importe</label>
-                                            <asp:TextBox ID="txtpro_importe" runat="server" ></asp:TextBox>
+                                            <asp:TextBox ID="txtpro_importe" runat="server" MaxLength="10" ></asp:TextBox>
                                         </div>
                                         <div class='pure-control-group'>
                                             <label >Cantidad</label>
-                                            <asp:TextBox ID="txtpro_cant" runat="server" ></asp:TextBox>
+                                            <asp:TextBox ID="txtpro_cant" runat="server" Max="99999"  type="number"  ></asp:TextBox>
                                         </div>
                                          <div class='pure-control-group'>
                                                 <asp:PlaceHolder ID="place_list_pro" runat="server" Visible="false">

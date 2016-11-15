@@ -27,7 +27,7 @@
                    
                 <div class='pure-control-group'>
                     <label for='name'>RUC</label> 
-                    <asp:TextBox ID="txtruc" runat="server"  MaxLength="20"></asp:TextBox>
+                    <asp:TextBox ID="txtruc" runat="server" type="number" max="99999999999999999999"></asp:TextBox>
                 </div>
 
                 <div class='pure-control-group'>

@@ -37,12 +37,12 @@
 
                 <div class='pure-control-group'>
                     <label for='email'>Precio Unitario</label>
-                    <asp:TextBox ID="txtpreciou" runat="server" placeholder=''  MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="txtpreciou" runat="server" placeholder='' MaxLength="10"></asp:TextBox>
                 </div>
 
                 <div class='pure-control-group'>
                     <label for='foo'>Precio Por Mayor</label>
-                    <asp:TextBox ID="txtpreciom" runat="server" placeholder=''  MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="txtpreciom" runat="server" placeholder='' MaxLength="10"></asp:TextBox>
                 </div>
                 <div class='pure-control-group'>
                     <label for='foo'>Procedencia</label>

@@ -334,9 +334,6 @@ namespace CapaPresentacion.pages
                     Doc.doc_type = "COMPRA";
                     clsDoc.Insert_Doc(Doc);
                     clean_compra();
-
-                  
-
                     Response.Redirect("compras.aspx");
 
                 }else

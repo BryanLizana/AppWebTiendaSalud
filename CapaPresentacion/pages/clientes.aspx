@@ -27,7 +27,7 @@
                     <div class='pure-control-group'>
                              
                         <label> <asp:Label ID="lbdni" runat="server">DNI</asp:Label></label>
-                        <asp:TextBox ID="txtdni" runat="server"  MaxLength="20"></asp:TextBox>
+                        <asp:TextBox ID="txtdni" runat="server"  Max="99999999999999999999"  type="number"></asp:TextBox>
                     </div>
 
                     <div class='pure-control-group'>
@@ -47,7 +47,7 @@
                 </div>
                 <div class='pure-control-group'>
                     <label >Telefono</label>
-                    <asp:TextBox ID="txttel" runat="server" placeholder='phone' MaxLength="20" ></asp:TextBox>
+                    <asp:TextBox ID="txttel" runat="server" placeholder='phone' Max="9999999999"  type="number"  ></asp:TextBox>
                 </div>
           
                  <div class='pure-control-group'>

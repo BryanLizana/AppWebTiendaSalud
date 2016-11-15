@@ -90,9 +90,9 @@ namespace CapaPresentacion.pages
 
             functions fn = new functions();
             Session["msg"] = fn.msg(clsClie.Insert_Clientes(Cliente), "info");
-            Session["Cli_id"] = "0";
             PlaceHolder1.Visible = false;
-            Response.Redirect("clientes.aspx");
+                Session["msg"] = "0";
+                Response.Redirect("clientes.aspx");
            }else  {
             functions fn = new functions();
             Session["msg"] = fn.msg("Campos Vacíos", "info");
